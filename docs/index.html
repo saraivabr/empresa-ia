@@ -3,132 +3,286 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sua Empresa.ia — Guia rápido</title>
-<meta name="description" content="Conheça sua equipe da Empresa.ia no WhatsApp e aprenda a usar no dia a dia.">
-<link rel="stylesheet" href="assets/style.css">
+<title>Empresa.ia — o sistema operacional dentro do WhatsApp</title>
+<meta name="description" content="Uma equipe de funcionárias de IA que conversa, liga por voz, ouve, vê e toca a operação do seu negócio — direto no WhatsApp. Open-source, MIT.">
+<meta property="og:title" content="Empresa.ia — o SO dentro do WhatsApp">
+<meta property="og:description" content="Um time de IA que conversa, liga por voz e toca a operação no WhatsApp. Open-source, grátis pra todos.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070b0a; --bg-2:#0b1110; --surface:#0f1715; --surface-2:#141f1c; --line:#1d2a27;
+    --green:#22e07a; --green-deep:#12b85f; --green-glow:rgba(34,224,122,.32);
+    --amber:#ffc163; --coral:#ff7a59;
+    --text:#eef3f1; --text-dim:#9fb1ab; --text-faint:#6d827c;
+    --text-hero:clamp(2.6rem,1.1rem+6.4vw,6.2rem);
+    --text-h2:clamp(1.9rem,1rem+3vw,3.2rem);
+    --text-lead:clamp(1.05rem,.95rem+.5vw,1.3rem);
+    --space:clamp(4.5rem,3rem+6vw,9rem);
+    --maxw:1180px; --r:18px; --r-lg:26px;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --font-d:"Space Grotesk",system-ui,sans-serif; --font-b:"Inter",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-b);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;z-index:-2;background:
+    radial-gradient(60% 50% at 78% 8%,var(--green-glow),transparent 70%),
+    radial-gradient(50% 40% at 12% 80%,rgba(255,122,89,.12),transparent 70%),var(--bg)}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;opacity:.04;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--font-d);font-weight:700;line-height:1.02;letter-spacing:-.02em}
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(1.1rem,.5rem+2.5vw,2rem)}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-d);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);background:rgba(34,224,122,.08);border:1px solid rgba(34,224,122,.22);padding:.42rem .8rem;border-radius:100px}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font-d);font-weight:600;font-size:1rem;padding:.92rem 1.5rem;border-radius:100px;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s,color .2s,border-color .2s}
+  .btn-pri{background:linear-gradient(180deg,var(--green),var(--green-deep));color:#04140c;box-shadow:0 10px 30px -8px var(--green-glow),inset 0 1px 0 rgba(255,255,255,.3)}
+  .btn-pri:hover{transform:translateY(-3px);box-shadow:0 18px 44px -10px var(--green-glow),inset 0 1px 0 rgba(255,255,255,.3)}
+  .btn-gho{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.02)}
+  .btn-gho:hover{border-color:var(--green);transform:translateY(-3px);color:var(--green)}
+  nav.top{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(7,11,10,.6);border-bottom:1px solid var(--line)}
+  nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:.6rem;font-family:var(--font-d);font-weight:700;font-size:1.12rem}
+  .brand .blob{width:13px;height:13px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(34,224,122,.18),0 0 18px var(--green)}
+  .nav-links{display:flex;gap:1.6rem;align-items:center}
+  .nav-links a{color:var(--text-dim);font-size:.93rem;font-weight:500;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  @media(max-width:760px){.nav-links a:not(.btn){display:none}}
+  .hero{padding:clamp(3rem,2rem+5vw,6rem) 0 var(--space)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,1rem+4vw,4.5rem);align-items:center}
+  @media(max-width:920px){.hero-grid{grid-template-columns:1fr;gap:3rem}}
+  .hero h1{font-size:var(--text-hero);margin:1.4rem 0 1.1rem}
+  .hero h1 .hl{background:linear-gradient(120deg,var(--green),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .lead{font-size:var(--text-lead);color:var(--text-dim);max-width:34ch}
+  .hero .cta{display:flex;gap:.9rem;flex-wrap:wrap;margin:2rem 0 1rem}
+  .hero .micro{font-size:.9rem;color:var(--text-faint);display:flex;align-items:center;gap:.5rem}
+  .hero .micro b{color:var(--green);font-weight:600}
+  .phone{position:relative;justify-self:center;width:min(330px,86vw);aspect-ratio:9/18.6;background:linear-gradient(160deg,#10201b,#0a1411);border:1px solid var(--line);border-radius:42px;padding:13px;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(34,224,122,.07),inset 0 1px 0 rgba(255,255,255,.05)}
+  .phone::before{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);width:38%;height:7px;border-radius:100px;background:#05100c;z-index:3}
+  .screen{height:100%;border-radius:31px;background:#0c1512;overflow:hidden;display:flex;flex-direction:column}
+  .scr-top{display:flex;align-items:center;gap:.6rem;padding:.85rem .8rem;background:linear-gradient(180deg,#12201b,#0e1814);border-bottom:1px solid var(--line)}
+  .scr-top .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-deep));display:grid;place-items:center;font-family:var(--font-d);font-weight:700;color:#03130b;font-size:.95rem;flex:0 0 auto}
+  .scr-top .nm{font-family:var(--font-d);font-weight:600;font-size:.92rem;line-height:1.1}
+  .scr-top .st{font-size:.72rem;color:var(--green)}
+  .scr-top .call{margin-left:auto;color:var(--green);font-size:1.05rem}
+  .chat{flex:1;padding:.85rem .75rem;display:flex;flex-direction:column;gap:.55rem;overflow:hidden;background:radial-gradient(120% 60% at 50% 0,rgba(34,224,122,.05),transparent)}
+  .bub{max-width:82%;padding:.55rem .72rem;border-radius:15px;font-size:.82rem;line-height:1.4;animation:rise .6s var(--ease) both}
+  .bub.in{align-self:flex-start;background:#172521;border-bottom-left-radius:5px}
+  .bub.out{align-self:flex-end;background:linear-gradient(180deg,#1d5238,#143d29);border-bottom-right-radius:5px}
+  .bub .who{font-family:var(--font-d);font-weight:600;font-size:.7rem;color:var(--green);margin-bottom:.15rem}
+  .bub small{display:block;text-align:right;font-size:.6rem;color:var(--text-faint);margin-top:.2rem}
+  .callpill{align-self:flex-start;display:flex;align-items:center;gap:.55rem;background:linear-gradient(180deg,#15302a,#102420);border:1px solid rgba(34,224,122,.3);border-radius:14px;padding:.6rem .8rem;font-size:.8rem;animation:rise .6s var(--ease) both}
+  .callpill .ic{width:30px;height:30px;border-radius:50%;background:var(--green);color:#03130b;display:grid;place-items:center;animation:pulse 1.6s ease-in-out infinite}
+  .typing{align-self:flex-start;display:flex;gap:4px;background:#172521;padding:.7rem .8rem;border-radius:15px;border-bottom-left-radius:5px}
+  .typing span{width:6px;height:6px;border-radius:50%;background:var(--text-faint);animation:blink 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @keyframes blink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--green-glow)}50%{box-shadow:0 0 0 8px transparent}}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.on{opacity:1;transform:none}
+  section{padding-block:var(--space)}
+  .kicker{font-family:var(--font-d);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:.8rem;color:var(--green)}
+  h2.big{font-size:var(--text-h2);margin:.7rem 0 1rem;max-width:18ch}
+  .sub{color:var(--text-dim);font-size:var(--text-lead);max-width:54ch}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
 </head>
 <body>
-<div class="layout">
-  <aside class="side">
-    <div class="brand"><span class="dot"></span> Empresa.ia <small>seu guia</small></div>
-    <nav>
-      <span class="grp">Comece aqui</span>
-      <a href="#bem-vindo">Bem-vindo</a>
-      <a href="#equipe">Sua equipe</a>
-      <a href="#comecar">Como começar</a>
-      <span class="grp">No dia a dia</span>
-      <a href="#pedir">O que pedir</a>
-      <a href="#resumo">Seu resumo do dia</a>
-      <a href="#ligacao">Receber uma ligação</a>
-      <a href="#atalhos">Atalhos rápidos</a>
-      <span class="grp">Dúvidas</span>
-      <a href="#faq">Perguntas frequentes</a>
-    </nav>
-  </aside>
+<nav class="top"><div class="wrap">
+  <a class="brand" href="#top"><span class="blob"></span> Empresa<span style="color:var(--green)">.ia</span></a>
+  <div class="nav-links">
+    <a href="#oque">o que é</a>
+    <a href="#apps">capacidades</a>
+    <a href="#equipe">a equipe</a>
+    <a class="btn btn-gho" style="padding:.5rem 1.1rem" href="https://github.com/saraivabr/empresa-ia" target="_blank" rel="noopener">★ GitHub</a>
+  </div>
+</div></nav>
 
-  <main class="content">
-    <section class="hero" id="bem-vindo">
-      <div class="kicker">Seu guia rápido</div>
-      <h1>Sua equipe no WhatsApp</h1>
-      <p class="lead">A <b>Empresa.ia</b> é um time que trabalha pra você direto no WhatsApp. Não é um robô de menu — é a <b>Sofia</b> e as especialistas dela, cada uma cuidando de uma parte do seu negócio. Você fala como fala com qualquer pessoa: do seu jeito, na sua língua.</p>
-      <div class="note">É só mandar <b>“oi”</b> no WhatsApp da sua Empresa.ia. A Sofia te recebe e a partir daí é só conversar.</div>
-    </section>
-
-    <section id="equipe">
-      <div class="kicker">Quem trabalha pra você</div>
-      <h2>Conheça sua equipe</h2>
-      <p class="lead">Sete pessoas, cada uma especialista em uma área. Você não precisa decorar nada — fala o que precisa e a Sofia te leva até a certa.</p>
-      <div class="team">
-        <div class="card"><img src="assets/team/sofia.jpg" alt="Sofia"><div class="body"><b>Sofia</b> — sua gerente<p>Te recebe, entende o que você precisa e chama a pessoa certa. Quando estiver perdido, fala com ela.</p></div></div>
-        <div class="card"><img src="assets/team/clara.jpg" alt="Clara"><div class="body"><b>Clara</b> — vendas<p>Cuida dos seus clientes e propostas. “Cliente sumiu”, “proposta parada”? É com a Clara.</p></div></div>
-        <div class="card"><img src="assets/team/bia.jpg" alt="Bia"><div class="body"><b>Bia</b> — redes sociais<p>Seu Instagram: posts, comentários, ideias do que publicar. “O que eu posto hoje?” → Bia.</p></div></div>
-        <div class="card"><img src="assets/team/maya.jpg" alt="Maya"><div class="body"><b>Maya</b> — atendimento<p>Organiza seu WhatsApp quando vira bagunça e acha quem ficou sem resposta.</p></div></div>
-        <div class="card"><img src="assets/team/helena.jpg" alt="Helena"><div class="body"><b>Helena</b> — financeiro<p>Seu dinheiro com clareza: o que entrou, o que está atrasado, o que cobrar.</p></div></div>
-        <div class="card"><img src="assets/team/lara.jpg" alt="Lara"><div class="body"><b>Lara</b> — operação<p>Aquilo que trava o seu dia: tarefa atrasada, processo emperrado. A Lara destrava.</p></div></div>
-        <div class="card"><img src="assets/team/nina.jpg" alt="Nina"><div class="body"><b>Nina</b> — rotina<p>Organiza seu dia e te diz por onde começar. Ótima pra começar a manhã.</p></div></div>
+<header class="hero" id="top"><div class="wrap hero-grid">
+  <div class="reveal on">
+    <span class="eyebrow">● Open-source · MIT · feito no Brasil</span>
+    <h1>O sistema operacional que vive <span class="hl">dentro do WhatsApp</span>.</h1>
+    <p class="lead">Um time de funcionárias de IA que conversa, <b style="color:var(--text)">liga por voz</b>, ouve áudio, vê imagem e vídeo, se conecta às suas ferramentas e toca a operação — sem app novo, sem painel. Só conversa.</p>
+    <div class="cta">
+      <a class="btn btn-pri" href="https://github.com/saraivabr/empresa-ia" target="_blank" rel="noopener">★ Ver no GitHub</a>
+      <a class="btn btn-gho" href="#equipe">Conhecer a equipe</a>
+    </div>
+    <p class="micro">⬇ <b>Grátis pra todos.</b> Clone, preencha o .env e suba a sua.</p>
+  </div>
+  <div class="phone reveal on" aria-hidden="true">
+    <div class="screen">
+      <div class="scr-top"><div class="av">S</div><div><div class="nm">Sofia · Empresa.ia</div><div class="st">online agora</div></div><div class="call">📞</div></div>
+      <div class="chat">
+        <div class="bub out" style="animation-delay:.1s">Oi! Tô perdendo cliente no WhatsApp 😣<small>20:14</small></div>
+        <div class="bub in" style="animation-delay:.5s"><span class="who">Sofia · Gerência</span>Bora resolver. Posso te ligar rapidinho pra entender e já configurar?<small>20:14</small></div>
+        <div class="callpill" style="animation-delay:1s"><span class="ic">📞</span> Sofia está te ligando…</div>
+        <div class="bub in" style="animation-delay:1.5s"><span class="who">Clara · Vendas</span>Te mandei aqui os 5 orçamentos parados pra resgatar hoje 👇<small>20:16</small></div>
+        <div class="typing" style="animation:rise .6s 2s both"><span></span><span></span><span></span></div>
       </div>
-    </section>
+    </div>
+  </div>
+</div></header>
 
-    <section id="comecar">
-      <div class="kicker">Primeiros passos</div>
-      <h2>Como começar</h2>
-      <div class="steps">
-        <div class="step"><b>Manda um “oi”.</b> No WhatsApp da sua Empresa.ia. A Sofia te responde na hora, como uma pessoa.</div>
-        <div class="step"><b>Conta o que tá pegando.</b> Fala do seu jeito: “meus clientes sumiram”, “preciso postar algo”, “como tá meu caixa?”. Sem comando, sem decoreba.</div>
-        <div class="step"><b>A especialista entra.</b> A Sofia chama quem cuida daquilo. A pessoa se apresenta (você até ouve a voz dela) e já começa a te ajudar.</div>
-      </div>
-      <div class="note">Prefere ver todo mundo de uma vez? Manda <b>@equipe</b> que aparecem as sete, com foto e o botão “Falar com”.</div>
-    </section>
+<style>
+  .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-top:2.6rem}
+  .card{position:relative;background:linear-gradient(180deg,var(--surface),var(--surface-2));border:1px solid var(--line);border-radius:var(--r-lg);padding:1.7rem;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;overflow:hidden}
+  .card:hover{transform:translateY(-5px);border-color:rgba(34,224,122,.42);box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+  .card .ic{font-size:1.7rem;margin-bottom:.7rem;display:inline-block}
+  .card h3{font-size:1.22rem;margin-bottom:.4rem}
+  .card p{color:var(--text-dim);font-size:.95rem}
+  .card.feat{background:linear-gradient(150deg,#103226,#0c1a16);border-color:rgba(34,224,122,.3)}
+  .card.feat::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at 85% 0,var(--green-glow),transparent 60%);opacity:.5;pointer-events:none}
+  .card.feat h3{font-size:1.7rem}
+  .card .tag{position:relative;z-index:1;display:inline-block;font-family:var(--font-d);font-size:.72rem;font-weight:600;color:var(--green);border:1px solid rgba(34,224,122,.3);border-radius:100px;padding:.25rem .7rem;margin-top:1rem}
+  .c-2{grid-column:span 2}.c-3{grid-column:span 3}.c-4{grid-column:span 4}.c-6{grid-column:span 6}
+  @media(max-width:860px){.bento{grid-template-columns:1fr 1fr}.c-2,.c-3,.c-4{grid-column:span 1}.c-6{grid-column:span 2}.card.feat h3{font-size:1.4rem}}
+  @media(max-width:520px){.bento{grid-template-columns:1fr}.c-6{grid-column:span 1}}
+  .stats{display:flex;gap:2.4rem;flex-wrap:wrap;margin-top:2.2rem}
+  .stat b{font-family:var(--font-d);font-size:2.2rem;color:var(--green);display:block;line-height:1}
+  .stat span{color:var(--text-faint);font-size:.9rem}
+</style>
 
-    <section id="pedir">
-      <div class="kicker">No dia a dia</div>
-      <h2>O que você pode pedir</h2>
-      <p class="lead">Alguns exemplos do que falar — e quem cuida. Você não precisa escolher a pessoa: é só dizer o que precisa.</p>
-      <table>
-        <tr><th>Você diz algo como…</th><th>Quem cuida</th></tr>
-        <tr><td>“Tenho cliente parado”, “quero fechar mais vendas”, “manda proposta”</td><td><b>Clara</b> · vendas</td></tr>
-        <tr><td>“O que eu posto hoje?”, “responde meus comentários”, “me dá uma ideia de conteúdo”</td><td><b>Bia</b> · redes</td></tr>
-        <tr><td>“Meu WhatsApp tá um caos”, “quem ficou sem resposta?”</td><td><b>Maya</b> · atendimento</td></tr>
-        <tr><td>“Como tá meu caixa?”, “quem tá me devendo?”, “preciso cobrar”</td><td><b>Helena</b> · financeiro</td></tr>
-        <tr><td>“Tá tudo travado”, “essa tarefa não anda”, “meu processo emperrou”</td><td><b>Lara</b> · operação</td></tr>
-        <tr><td>“Por onde começo hoje?”, “organiza meu dia”</td><td><b>Nina</b> · rotina</td></tr>
-        <tr><td>“Não sei o que preciso”, “me ajuda a decidir”</td><td><b>Sofia</b> · te orienta</td></tr>
-      </table>
-    </section>
+<section id="oque"><div class="wrap reveal">
+  <span class="kicker">o que é</span>
+  <h2 class="big">Não é um chatbot. É a sua empresa — em IA.</h2>
+  <p class="sub">A pessoa nunca "fala com um robô": fala com a <b style="color:var(--text)">Sofia</b>, a anfitriã, e ela traz a especialista certa pra cada coisa. Vendas, atendimento, financeiro, redes, agenda — uma equipe inteira trabalhando por trás, no canal onde seu cliente já está: o WhatsApp.</p>
+  <div class="stats">
+    <div class="stat"><b>9</b><span>funcionárias de IA</span></div>
+    <div class="stat"><b>0</b><span>apps novos pra instalar</span></div>
+    <div class="stat"><b>24/7</b><span>sem deixar ninguém no vácuo</span></div>
+    <div class="stat"><b>MIT</b><span>open-source, de graça</span></div>
+  </div>
+</div></section>
 
-    <section id="resumo">
-      <div class="kicker">No dia a dia</div>
-      <h2>Seu resumo do dia</h2>
-      <p class="lead">Quer ver tudo de uma vez, por área? Manda <b>@resumo</b>. A equipe te mostra o que aconteceu em cada setor — vendas, redes, atendimento, financeiro, operação — e já oferece o próximo passo.</p>
-      <div class="note">É como abrir a empresa de manhã e cada especialista te dar o panorama da área dela, em segundos.</div>
-    </section>
+<section id="apps"><div class="wrap">
+  <div class="reveal"><span class="kicker">capacidades</span><h2 class="big">Os "apps" do sistema.</h2>
+  <p class="sub">Tudo dentro de uma conversa de WhatsApp.</p></div>
+  <div class="bento reveal">
+    <div class="card feat c-4">
+      <span class="ic">📞</span>
+      <h3>Ela te liga. E resolve falando.</h3>
+      <p>Quando algo é melhor por voz, a IA <b style="color:var(--text)">liga de verdade</b> — voz natural, baixa latência — e, durante a ligação, <b style="color:var(--text)">manda links, resumos e carrosséis no seu WhatsApp ao vivo</b>. É o que ouvido humano não capta virando ação na hora.</p>
+      <span class="tag">LiveKit · Gemini native-audio</span>
+    </div>
+    <div class="card c-2">
+      <span class="ic">👁️</span>
+      <h3>Ouve, vê e assiste</h3>
+      <p>Transcreve seu áudio, descreve sua imagem e <b style="color:var(--text)">assiste seu vídeo</b> (ouve a fala + lê a cena). Mídia vira contexto real.</p>
+    </div>
+    <div class="card c-2">
+      <span class="ic">🔌</span>
+      <h3>Conecta suas ferramentas</h3>
+      <p>Gmail, Agenda, Sheets e Drive via <code>@conectar</code>. Ela passa a enxergar seu negócio de verdade.</p>
+    </div>
+    <div class="card c-2">
+      <span class="ic">👥</span>
+      <h3>Cria grupos dedicados</h3>
+      <p>Monta um grupo só pro assunto, te coloca como admin, dá nome e ícone, e atende ali.</p>
+    </div>
+    <div class="card c-2">
+      <span class="ic">🧲</span>
+      <h3>Captura leads sozinha</h3>
+      <p>Enquanto conversa, vai montando o perfil da empresa num mini-CRM. Nada se perde.</p>
+    </div>
+    <div class="card c-3">
+      <span class="ic">⌨️</span>
+      <h3>Comandos rápidos</h3>
+      <p><code>@equipe</code> mostra o time · <code>@resumo</code> seu dia · <code>@conectar</code> suas ferramentas.</p>
+    </div>
+    <div class="card c-3">
+      <span class="ic">✨</span>
+      <h3>Mostra o que está fazendo</h3>
+      <p>Em tarefas de verdade, ela edita a mensagem revelando o progresso — "puxando isso pra você…". Encanta, sem poluir.</p>
+    </div>
+  </div>
+</div></section>
 
-    <section id="ligacao">
-      <div class="kicker">No dia a dia</div>
-      <h2>Receber uma ligação</h2>
-      <p class="lead">Quando faz sentido, uma especialista pode <b>te ligar de verdade</b> pelo WhatsApp pra resolver algo na conversa — mais rápido que digitar. É só tocar em <b>“X liga”</b> no card dela, ou pedir “me liga sobre vendas”.</p>
-      <div class="warn">Você sempre manda. Nada acontece sem você pedir — a equipe sugere, você decide.</div>
-    </section>
+<style>
+  .team{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:1rem;margin-top:2.6rem}
+  .member{background:linear-gradient(180deg,var(--surface),var(--surface-2));border:1px solid var(--line);border-radius:var(--r);padding:1.1rem;text-align:center;transition:transform .3s var(--ease),border-color .3s}
+  .member:hover{transform:translateY(-5px);border-color:rgba(34,224,122,.42)}
+  .member img,.member .ph{width:78px;height:78px;border-radius:50%;object-fit:cover;margin:0 auto .7rem;border:2px solid rgba(34,224,122,.3);display:block}
+  .member .ph{background:linear-gradient(135deg,var(--coral),var(--amber));display:grid;place-items:center;font-family:var(--font-d);font-weight:700;color:#1a1208;font-size:1.7rem}
+  .member .nm{font-family:var(--font-d);font-weight:600}
+  .member .role{color:var(--green);font-size:.82rem}
+  .flow{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-top:2.4rem}
+  .node{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.85rem 1.05rem;font-family:var(--font-d);font-weight:600;font-size:.93rem}
+  .node b{color:var(--green)}
+  .arrow{color:var(--text-faint);font-size:1.1rem}
+  .cta-box{background:linear-gradient(150deg,#0f2b20,#0a1613);border:1px solid rgba(34,224,122,.28);border-radius:var(--r-lg);padding:clamp(2rem,1rem+4vw,4rem);text-align:center;position:relative;overflow:hidden}
+  .cta-box::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 50% 0,var(--green-glow),transparent 60%);opacity:.5;pointer-events:none}
+  .cta-box>*{position:relative;z-index:1}
+  .steps{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:2rem 0}
+  .step{flex:1;min-width:190px;max-width:250px;text-align:left;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:var(--r);padding:1.2rem}
+  .step b{font-family:var(--font-d);color:var(--green)}
+  .code{font-family:ui-monospace,SFMono-Regular,monospace;background:#06100c;border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;display:inline-block;color:var(--text-dim);font-size:.88rem;margin-top:.4rem;text-align:left;white-space:pre}
+  .code .g{color:var(--green)}
+</style>
 
-    <section id="atalhos">
-      <div class="kicker">No dia a dia</div>
-      <h2>Atalhos rápidos</h2>
-      <p class="lead">Você nunca <i>precisa</i> deles (é só conversar), mas eles agilizam:</p>
-      <table>
-        <tr><th>Atalho</th><th>O que abre</th></tr>
-        <tr><td><b>@equipe</b></td><td>Mostra as sete especialistas, com foto e botão “Falar com”.</td></tr>
-        <tr><td><b>@resumo</b></td><td>O resumo do dia, área por área.</td></tr>
-        <tr><td><b>“Falar com a Clara”</b> <span class="pill">botão</span></td><td>A especialista entra na conversa e se apresenta.</td></tr>
-        <tr><td><b>“Clara me liga”</b> <span class="pill">botão</span></td><td>Ela te liga no WhatsApp.</td></tr>
-      </table>
-    </section>
+<section id="equipe"><div class="wrap">
+  <div class="reveal"><span class="kicker">a equipe</span><h2 class="big">Conheça as funcionárias.</h2>
+  <p class="sub">Cada uma com voz própria, sotaque e jeito. A Sofia recebe; as outras resolvem.</p></div>
+  <div class="team reveal">
+    <div class="member"><img src="assets/team/sofia.jpg" alt="Sofia" width="78" height="78" loading="lazy"><div class="nm">Sofia</div><div class="role">Gerência</div></div>
+    <div class="member"><img src="assets/team/clara.jpg" alt="Clara" width="78" height="78" loading="lazy"><div class="nm">Clara</div><div class="role">Vendas</div></div>
+    <div class="member"><img src="assets/team/maya.jpg" alt="Maya" width="78" height="78" loading="lazy"><div class="nm">Maya</div><div class="role">Atendimento</div></div>
+    <div class="member"><img src="assets/team/bia.jpg" alt="Bia" width="78" height="78" loading="lazy"><div class="nm">Bia</div><div class="role">Redes Sociais</div></div>
+    <div class="member"><img src="assets/team/helena.jpg" alt="Helena" width="78" height="78" loading="lazy"><div class="nm">Helena</div><div class="role">Financeiro</div></div>
+    <div class="member"><img src="assets/team/lara.jpg" alt="Lara" width="78" height="78" loading="lazy"><div class="nm">Lara</div><div class="role">Operação</div></div>
+    <div class="member"><img src="assets/team/nina.jpg" alt="Nina" width="78" height="78" loading="lazy"><div class="nm">Nina</div><div class="role">Rotina</div></div>
+    <div class="member"><div class="ph">A</div><div class="nm">Alice</div><div class="role">Onboarding</div></div>
+    <div class="member"><div class="ph">D</div><div class="nm">Dani</div><div class="role">Desenvolvimento</div></div>
+  </div>
+</div></section>
 
-    <section id="faq">
-      <div class="kicker">Tirando dúvidas</div>
-      <h2>Perguntas frequentes</h2>
+<section id="como"><div class="wrap reveal">
+  <span class="kicker">como funciona</span>
+  <h2 class="big">Aberto, configurável, seu.</h2>
+  <p class="sub">O WhatsApp entra pela uazapi, o bridge orquestra tudo, o cérebro pensa (modelo à sua escolha) e a voz acontece pela LiveKit. Você troca cada peça.</p>
+  <div class="flow">
+    <span class="node">📱 <b>WhatsApp</b></span><span class="arrow">→</span>
+    <span class="node">🔗 <b>uazapi</b></span><span class="arrow">→</span>
+    <span class="node">⚙️ <b>bridge.js</b></span><span class="arrow">→</span>
+    <span class="node">🧠 <b>cérebro</b> (OpenClaw)</span><span class="arrow">→</span>
+    <span class="node">📞 <b>voz</b> (LiveKit + Gemini)</span>
+  </div>
+  <p class="sub" style="margin-top:1.4rem">Transcrição por <b style="color:var(--text)">Groq Whisper</b> · visão por <b style="color:var(--text)">Gemini</b> · integrações por <b style="color:var(--text)">Composio</b>. Cada serviço é uma variável no <code>.env</code>.</p>
+</div></section>
 
-      <h3>Preciso instalar alguma coisa?</h3>
-      <p>Não. Tudo acontece no seu WhatsApp normal. É só conversar.</p>
+<section id="comecar"><div class="wrap reveal"><div class="cta-box">
+  <span class="eyebrow" style="background:rgba(34,224,122,.12)">★ Grátis · Open-source · MIT</span>
+  <h2 class="big" style="margin-inline:auto;max-width:22ch">Monte a sua Empresa.ia.</h2>
+  <p class="sub" style="margin-inline:auto">Todo o código está no GitHub. Clone, preencha suas chaves e suba — em minutos você tem o seu time de IA rodando.</p>
+  <div class="steps">
+    <div class="step"><b>1 · Clone</b><p style="color:var(--text-dim);font-size:.9rem;margin-top:.3rem">Baixe o repositório e rode o <code>setup.sh</code>.</p></div>
+    <div class="step"><b>2 · Configure</b><p style="color:var(--text-dim);font-size:.9rem;margin-top:.3rem">Preencha o <code>.env</code> com suas contas (uazapi, Groq, Google…).</p></div>
+    <div class="step"><b>3 · Suba</b><p style="color:var(--text-dim);font-size:.9rem;margin-top:.3rem">Inicie o bridge e a voz. Pronto: sua equipe está no ar.</p></div>
+  </div>
+  <div class="code"><span class="g">git</span> clone https://github.com/saraivabr/empresa-ia
+cd empresa-ia && <span class="g">./setup.sh</span></div>
+  <div style="margin-top:2rem"><a class="btn btn-pri" href="https://github.com/saraivabr/empresa-ia" target="_blank" rel="noopener">★ Ver no GitHub</a></div>
+</div></div></section>
 
-      <h3>Tenho que usar comandos certinhos?</h3>
-      <p>Não. Fala do seu jeito, como falaria com um funcionário. Os atalhos (<code>@equipe</code>, <code>@resumo</code>) são só pra quem gosta de agilizar.</p>
 
-      <h3>As pessoas da equipe são reais?</h3>
-      <p>São especialistas da sua Empresa.ia — cada uma cuida de uma área de verdade do seu negócio. Elas trabalham pra você o tempo todo, com a sua cara e o seu jeito.</p>
+<footer style="border-top:1px solid var(--line);padding:3rem 0;text-align:center;color:var(--text-faint)">
+  <div class="wrap">
+    <a class="brand" href="#top" style="justify-content:center;margin-bottom:1rem"><span class="blob"></span> Empresa<span style="color:var(--green)">.ia</span></a>
+    <p style="margin-bottom:1.2rem">O sistema operacional dentro do WhatsApp. Open-source, MIT.</p>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap">
+      <a href="https://github.com/saraivabr/empresa-ia" target="_blank" rel="noopener" style="color:var(--green)">★ GitHub</a>
+      <a href="https://github.com/saraivabr/empresa-ia#readme" target="_blank" rel="noopener" style="color:var(--text-dim)">Instalação</a>
+      <a href="guia.html" style="color:var(--text-dim)">Guia de uso</a>
+    </div>
+    <p style="margin-top:1.6rem;font-size:.82rem">Feito com ☕ no Brasil · Licença MIT</p>
+  </div>
+</footer>
 
-      <h3>Como elas veem meus dados (vendas, financeiro…)?</h3>
-      <p>Você conecta suas ferramentas (seu CRM, Instagram, financeiro). Enquanto não conectar, a especialista te avisa com clareza e te ajuda a ligar — ela nunca inventa número.</p>
-
-      <h3>Posso falar com mais de uma?</h3>
-      <p>Pode. Fala com quem precisar, quando precisar. A Sofia organiza tudo pra você.</p>
-
-      <h3>E se eu me perder?</h3>
-      <p>Manda <b>“oi”</b> ou fala com a <b>Sofia</b>. Ela sempre te coloca de volta no caminho.</p>
-
-      <p class="foot">Sua Empresa.ia · Sofia · Clara · Bia · Maya · Helena · Lara · Nina — sempre no seu WhatsApp.</p>
-    </section>
-
-  </main>
-</div>
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
