@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Empresa.ia — Documentação</title>
+<meta name="description" content="Documentação e tutorial completo da Empresa.ia: equipe de setores agênticos no WhatsApp.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="side">
+    <div class="brand"><span class="dot"></span> Empresa.ia <small>docs</small></div>
+    <nav>
+      <span class="grp">Começar</span>
+      <a href="#visao">Visão geral</a>
+      <a href="#equipe">A equipe</a>
+      <a href="#fluxo">Como funciona</a>
+      <span class="grp">Uso</span>
+      <a href="#comandos">Comandos</a>
+      <a href="#carrosseis">Carrosséis</a>
+      <a href="#audios">Áudios &amp; voz</a>
+      <span class="grp">Técnico</span>
+      <a href="#arquitetura">Arquitetura</a>
+      <a href="#config">Configuração</a>
+      <a href="#deploy">Deploy</a>
+      <a href="#assets">Gerar assets</a>
+      <a href="#troubleshooting">Troubleshooting</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <section class="hero" id="visao">
+      <div class="kicker">Documentação · Tutorial completo</div>
+      <h1>Empresa.ia</h1>
+      <p class="lead">Uma equipe de <b>setores agênticos</b> que atende no WhatsApp. Não é um robô — é a <b>Sofia</b> e as especialistas, cada uma com nome, rosto e voz, que conversam, entendem e resolvem. Esta documentação cobre tudo: da experiência ao deploy.</p>
+      <div style="margin-top:18px">
+        <span class="pill">WhatsApp · uazapi</span>
+        <span class="pill">Cérebro · openclaw + Claude</span>
+        <span class="pill">Voz · Wavoip</span>
+        <span class="pill">7 especialistas</span>
+        <span class="pill">Pull, não push</span>
+      </div>
+      <div class="note">A filosofia: a pessoa nunca fala "com a plataforma". Ela fala <b>com a Sofia, que é da Empresa.ia</b> — e a Sofia traz a especialista certa.</div>
+    </section>
+
+    <section id="equipe">
+      <div class="kicker">Quem atende</div>
+      <h2>A equipe</h2>
+      <p class="lead">Sete pessoas, uma por setor. A Sofia recebe; as outras seis cuidam de cada frente do negócio. Cada uma tem foto, voz de apresentação e um botão "Falar com".</p>
+      <div class="team">
+        <div class="card"><img src="assets/team/sofia.jpg" alt="Sofia"><div class="body"><b>Sofia</b> — Gerente<p>Recebe você, entende o que precisa e conecta com a especialista certa.</p></div></div>
+        <div class="card"><img src="assets/team/bia.jpg" alt="Bia"><div class="body"><b>Bia</b> — Redes Sociais<p>Instagram, posts, comentários, DMs e o que vira pauta.</p></div></div>
+        <div class="card"><img src="assets/team/clara.jpg" alt="Clara"><div class="body"><b>Clara</b> — Vendas<p>Leads quentes e propostas paradas que viram caixa.</p></div></div>
+        <div class="card"><img src="assets/team/maya.jpg" alt="Maya"><div class="body"><b>Maya</b> — Atendimento<p>Organiza a fila do WhatsApp e recupera quem ficou sem resposta.</p></div></div>
+        <div class="card"><img src="assets/team/helena.jpg" alt="Helena"><div class="body"><b>Helena</b> — Financeiro<p>Caixa, atrasos e planilhas, com clareza pra decidir.</p></div></div>
+        <div class="card"><img src="assets/team/lara.jpg" alt="Lara"><div class="body"><b>Lara</b> — Operação<p>Processo travado, tarefa atrasada e fluxo quebrado.</p></div></div>
+        <div class="card"><img src="assets/team/nina.jpg" alt="Nina"><div class="body"><b>Nina</b> — Rotina<p>Agenda e a prioridade do dia, pra começar bem.</p></div></div>
+      </div>
+    </section>
+
+    <section id="fluxo">
+      <div class="kicker">A jornada</div>
+      <h2>Como funciona</h2>
+      <p class="lead">A entrada é uma <b>conversa</b>, não um menu. O painel só aparece quando a pessoa pede.</p>
+      <div class="steps">
+        <div class="step"><b>Cliente chega.</b> Manda "oi" ou conta a dor. A <b>Sofia responde em texto</b>, calorosa, e pergunta o que precisa — sem despejar menu.</div>
+        <div class="step"><b>Sofia conduz.</b> Resolve o simples ela mesma; ou convida: "quer que eu te apresente a equipe? manda <code>@equipe</code>".</div>
+        <div class="step"><b>Vitrine (sob convite).</b> <code>@equipe</code> abre o carrossel das 7, cada uma com foto e botão <b>Falar com a X</b>.</div>
+        <div class="step"><b>A especialista entra.</b> Ao tocar "Falar com a Clara", ela chega com um <b>áudio de apresentação</b> (voz) + o que faz. Sem "transferindo", sem fila.</div>
+        <div class="step"><b>Resolve com você.</b> A especialista propõe e <b>só age se você topar</b>. Pode te ligar de verdade (Wavoip) se fizer sentido.</div>
+      </div>
+      <div class="note">Resumo do dia: <code>@resumo</code> abre o Relatório por setor — cada especialista comenta o número da área dela.</div>
+    </section>
+    <section id="comandos">
+      <div class="kicker">Uso</div>
+      <h2>Comandos</h2>
+      <p class="lead">O sistema entende comandos explícitos (pull). Texto livre vai pra Sofia conversar.</p>
+      <table>
+        <tr><th>Comando</th><th>O que faz</th></tr>
+        <tr><td><code>@equipe</code> / <code>@empresa</code> / <code>@funcionarios</code></td><td>Abre a <b>Vitrine</b> — as 7 especialistas com foto e botão "Falar com".</td></tr>
+        <tr><td><code>@resumo</code> / <code>@relatorio</code></td><td>Abre o <b>Relatório do dia</b> por setor.</td></tr>
+        <tr><td><code>talk_&lt;id&gt;</code> <span class="pill">botão</span></td><td>"Falar com a X" — a especialista entra com <b>áudio de voz</b> + detalhe. Ex: <code>talk_clara</code>.</td></tr>
+        <tr><td><code>employee_&lt;id&gt;</code> <span class="pill">botão</span></td><td>Abre o detalhe de uma especialista.</td></tr>
+        <tr><td><code>call_employee_&lt;id&gt;</code> <span class="pill">botão</span></td><td>Pede pra especialista <b>ligar</b> via WhatsApp (Wavoip). Ex: <code>call_employee_clara</code>.</td></tr>
+        <tr><td>texto livre</td><td>Vai pro agente — a <b>Sofia conversa</b> e direciona. Nunca empurra menu.</td></tr>
+      </table>
+      <p>IDs válidos: <code>sofia</code>, <code>bia</code>, <code>clara</code>, <code>maya</code>, <code>helena</code>, <code>lara</code>, <code>nina</code>.</p>
+    </section>
+
+    <section id="carrosseis">
+      <div class="kicker">Uso</div>
+      <h2>Os carrosséis</h2>
+      <div class="grid2">
+        <div>
+          <h3>🪟 Vitrine da equipe</h3>
+          <p>As 7 especialistas lado a lado. Cada card: foto (<code>employee-&lt;id&gt;.jpg</code>), nome + setor, e os botões <b>Falar com a X</b> e <b>X liga</b>.</p>
+          <p>Acionada por <code>@equipe</code> ou quando a Sofia oferece.</p>
+        </div>
+        <div>
+          <h3>📊 Relatório do dia</h3>
+          <p>Um card por setor (exceto a gerência), com o sinal/número do dia e a especialista responsável. Acionado por <code>@resumo</code>.</p>
+        </div>
+      </div>
+      <h3>Formato técnico (enviado ao uazapi)</h3>
+      <pre><code>POST /send/carousel
+{ "number": "...", "text": "intro", "carousel": [
+    { "text": "*Clara — Vendas*\n...", "image": "https://.../employee-clara.jpg",
+      "buttons": [ {"id":"talk_clara","text":"Falar com a Clara","type":"REPLY"} ] }
+] }</code></pre>
+      <div class="warn"><b>Grupo → privado:</b> carrossel/botão só funciona em conversa 1:1 (limitação da Meta, erro <code>479</code>). Em grupo, o painel é redirecionado para o privado de quem chamou.</div>
+    </section>
+
+    <section id="audios">
+      <div class="kicker">Uso</div>
+      <h2>Áudios &amp; voz</h2>
+      <p class="lead">Cada especialista tem um áudio de apresentação humanizado (<code>audio-&lt;id&gt;.ogg</code>), disparado quando ela entra na conversa.</p>
+      <h3>Como o agente envia voz</h3>
+      <pre><code>&lt;uazapi&gt;{"type":"ptt","url":"https://.../audio-clara.ogg"}&lt;/uazapi&gt;</code></pre>
+      <p>O bridge converte isso em <code>POST /send/media</code> com <code>type:"ptt"</code> (bolinha de voz com waveform). Tipos aceitos: <code>ptt</code>/<code>voice</code> (voz) e <code>audio</code> (anexo comum).</p>
+      <table>
+        <tr><th>Campo</th><th>Descrição</th></tr>
+        <tr><td><code>type</code></td><td><code>ptt</code>, <code>voice</code>, <code>audio</code> ou <code>send.audio</code></td></tr>
+        <tr><td><code>url</code> / <code>file</code></td><td>URL <code>https://</code> ou <code>data:audio/</code> (validação de segurança)</td></tr>
+        <tr><td><code>ptt</code></td><td><code>true</code> força bolinha de voz</td></tr>
+        <tr><td><code>caption</code> / <code>text</code></td><td>texto opcional junto</td></tr>
+      </table>
+      <div class="note">Os áudios foram gerados com <b>Gemini TTS</b> (vozes femininas distintas por pessoa). O formato <code>.ogg</code> (Opus) é o ideal pra voz no WhatsApp.</div>
+    </section>
+
+    <section id="arquitetura">
+      <div class="kicker">Técnico</div>
+      <h2>Arquitetura</h2>
+      <p class="lead">O <code>bridge.js</code> é a cola entre o WhatsApp, o cérebro de IA e a voz.</p>
+      <pre><code>WhatsApp ⇄ uazapi  ──(webhook/SSE)──▶  bridge.js  ──▶  openclaw + Claude (cérebro: Sofia)
+                                          │
+                                          ├─▶ uazapi /send/{text,carousel,menu,media}
+                                          └─▶ Wavoip (ligação de voz real)</code></pre>
+      <table>
+        <tr><th>Peça</th><th>Papel</th></tr>
+        <tr><td><b>uazapi</b></td><td>Gateway WhatsApp: recebe mensagens (webhook/SSE) e envia texto, carrossel, menu e mídia.</td></tr>
+        <tr><td><b>bridge.js</b></td><td>Recebe, faz debounce, roteia comandos (Vitrine/Relatório/talk/call), chama o agente e envia as respostas.</td></tr>
+        <tr><td><b>openclaw + Claude</b></td><td>O cérebro. Encarna a Sofia, conversa e decide. Configurado por <code>SOUL.md</code> (+ <code>soul-empresaia.md</code>).</td></tr>
+        <tr><td><b>Wavoip</b></td><td>Faz a ligação de voz pelo WhatsApp quando o cliente pede "X me liga".</td></tr>
+        <tr><td><b>Assets</b></td><td>Fotos <code>employee-*.jpg</code> e áudios <code>audio-*.ogg</code> servidos via <code>ASSET_BASE</code>.</td></tr>
+      </table>
+    </section>
+
+    <section id="config">
+      <div class="kicker">Técnico</div>
+      <h2>Configuração</h2>
+      <p class="lead">Variáveis de ambiente do <code>bridge.js</code>. Defina via <code>.env</code> / PM2 ecosystem.</p>
+      <table>
+        <tr><th>Variável</th><th>Para quê</th></tr>
+        <tr><td><code>ASSET_BASE</code></td><td>URL pública base dos assets (ex: <code>https://.../assets/</code>). De onde vêm as fotos e áudios.</td></tr>
+        <tr><td><code>PUBLIC_DIR</code></td><td>Pasta local servida como assets (ex: <code>/opt/empresa-ia/public</code>).</td></tr>
+        <tr><td><code>INSTANCES_FILE</code></td><td>JSON com as instâncias uazapi (token/host).</td></tr>
+        <tr><td><code>OWNER_NUMBERS</code></td><td>Números do dono (acesso a recursos owner).</td></tr>
+        <tr><td><code>OPENCLAW_BIN</code> / <code>OPENCLAW_CONFIG</code></td><td>Binário e config do agente (cérebro).</td></tr>
+        <tr><td><code>AGENT_TIMEOUT_SEC</code></td><td>Timeout por turno do agente.</td></tr>
+        <tr><td><code>DEBOUNCE_MS</code> / <code>PREWARM_MS</code></td><td>Agrupamento de mensagens em rajada e pré-aquecimento.</td></tr>
+        <tr><td><code>ENABLE_SSE</code></td><td>Liga recebimento via SSE (além de webhook).</td></tr>
+        <tr><td><code>WEBHOOK_SECRET</code></td><td>Segredo de validação do webhook.</td></tr>
+        <tr><td><code>WAVOIP_API_KEY</code> · <code>WAVOIP_BASE_URL</code> · <code>WAVOIP_CALL_ENDPOINT</code> · <code>WAVOIP_DEVICE_TOKEN</code> · <code>WAVOIP_DEVICE_URL</code> · <code>WAVOIP_TIMEOUT_MS</code></td><td>Ligação de voz (Wavoip).</td></tr>
+        <tr><td><code>GEMINI_API_KEY</code> / <code>GOOGLE_API_KEY</code> · <code>GEMINI_TRANSCRIBE_MODEL</code> · <code>ENABLE_AUDIO_TRANSCRIPTION</code></td><td>Transcrição de áudio recebido.</td></tr>
+        <tr><td><code>EMPRESAIA_USAGE_FILE</code></td><td>Arquivo de perfil de uso (personalização).</td></tr>
+        <tr><td><code>HEALTH_PORT</code> / <code>BIND_HOST</code></td><td>Porta/host do healthcheck.</td></tr>
+      </table>
+    </section>
+
+    <section id="deploy">
+      <div class="kicker">Técnico</div>
+      <h2>Deploy</h2>
+      <div class="steps">
+        <div class="step"><b>Subir os assets.</b> Copie <code>employee-*.jpg</code> e <code>audio-*.ogg</code> (pasta <code>generated-carousel/team/deploy/</code>) para o <code>PUBLIC_DIR</code> do servidor (ex: <code>/opt/empresa-ia/public/</code>).</div>
+        <div class="step"><b>Subir o código.</b> Atualize <code>bridge.js</code> no servidor e incorpore o <code>soul-empresaia.md</code> ao <code>SOUL.md</code> do agente.</div>
+        <div class="step"><b>Reiniciar.</b> <code>pm2 restart empresa-ia-bridge</code> (ver <code>ecosystem.config.cjs</code>).</div>
+        <div class="step"><b>Validar.</b> Mande "oi" no WhatsApp → a Sofia responde conversando. <code>@equipe</code> → Vitrine. "Falar com a Clara" → áudio + detalhe.</div>
+      </div>
+      <pre><code># exemplo de cópia dos assets
+scp generated-carousel/team/deploy/* user@SERVIDOR:/opt/empresa-ia/public/
+# verificar sintaxe antes de subir
+node --check bridge.js</code></pre>
+      <div class="warn">O <code>claude-cli</code> (cérebro) pode exigir re-login em uma máquina nova — a autenticação não migra automaticamente.</div>
+    </section>
+
+    <section id="assets">
+      <div class="kicker">Técnico</div>
+      <h2>Gerar novos assets</h2>
+      <h3>Fotos (estilo Apple, 4:3)</h3>
+      <p>Geradas via <b>Gemini 3.1 Flash Image</b> (OpenRouter). Direção: fundo grafite + glow na cor do setor, tipografia fina off-white, brasileira, full-bleed, sem moldura. Salvar como <code>card-&lt;id&gt;.jpg</code> → renomear <code>employee-&lt;id&gt;.jpg</code>.</p>
+      <h3>Áudios (voz humanizada)</h3>
+      <p>Gerados via <b>Gemini TTS</b> (<code>gemini-2.5-flash-preview-tts</code>), uma voz feminina por pessoa, com instrução de estilo "caloroso, natural, WhatsApp". Saída convertida para <code>.ogg</code> (Opus).</p>
+      <div class="note">Roteiros, cores e vozes de cada pessoa estão em <code>FLUXO-EXPERIENCIA.md</code> na raiz do projeto.</div>
+    </section>
+
+    <section id="troubleshooting">
+      <div class="kicker">Técnico</div>
+      <h2>Troubleshooting</h2>
+      <table>
+        <tr><th>Sintoma</th><th>Causa provável / correção</th></tr>
+        <tr><td>Foto não aparece no card</td><td>Asset ausente em <code>PUBLIC_DIR</code> ou <code>ASSET_BASE</code> errado. O sistema cai numa imagem fallback. Suba <code>employee-&lt;id&gt;.jpg</code>.</td></tr>
+        <tr><td>Áudio não envia</td><td>URL precisa ser <code>https://</code>. Confirme que o <code>.ogg</code> está em Opus e acessível pela <code>ASSET_BASE</code>.</td></tr>
+        <tr><td>Carrossel falha em grupo (erro 479)</td><td>Esperado — Meta não permite interativo em grupo. O bridge redireciona pro privado de quem chamou.</td></tr>
+        <tr><td>"Não achei essa pessoa"</td><td>ID inválido. Use só: sofia, bia, clara, maya, helena, lara, nina.</td></tr>
+        <tr><td>Sofia empurra menu sozinha</td><td>Revise o <code>SOUL.md</code>: ela deve conversar e <b>oferecer</b>, não emitir carrossel sem pedido (pull).</td></tr>
+        <tr><td>Resposta vazia do agente</td><td>O bridge tenta 1 retry e cai num fallback (Vitrine). Verifique <code>OPENCLAW_BIN</code> e auth do claude-cli.</td></tr>
+      </table>
+      <p class="foot">Empresa.ia · documentação gerada automaticamente. Equipe: Sofia · Bia · Clara · Maya · Helena · Lara · Nina.</p>
+    </section>
+
+  </main>
+</div>
+</body>
+</html>

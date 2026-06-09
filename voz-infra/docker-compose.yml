@@ -1,0 +1,20 @@
+services:
+  redis:
+    image: redis:7-alpine
+    network_mode: host
+    restart: unless-stopped
+  livekit:
+    image: livekit/livekit-server
+    command: --config /livekit.yaml
+    network_mode: host
+    restart: unless-stopped
+    volumes: ["/opt/livekit/livekit.yaml:/livekit.yaml"]
+    depends_on: [redis]
+  sip:
+    image: livekit/sip
+    network_mode: host
+    restart: unless-stopped
+    volumes: ["/opt/livekit/sip.yaml:/sip.yaml"]
+    environment: ["SIP_CONFIG_BODY="]
+    command: --config /sip.yaml
+    depends_on: [redis, livekit]

@@ -1,0 +1,18 @@
+{
+  "name": "empresa-ia-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "uazapi <-> OpenClaw bridge — Empresa.ia WhatsApp OS",
+  "main": "bridge.js",
+  "scripts": {
+    "start": "node bridge.js",
+    "test": "node --test --test-force-exit"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^7.0.0-rc13",
+    "axios": "^1.7.0",
+    "eventsource": "^2.0.2",
+    "form-data": "^4.0.5",
+    "socket.io-client": "^4.8.3"
+  }
+}

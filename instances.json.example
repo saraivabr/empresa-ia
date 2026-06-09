@@ -1,0 +1,11 @@
+[
+  {
+    "id": "jesus",
+    "uazapi_url": "https://SEU-SUBDOMINIO.uazapi.com",
+    "uazapi_token": "COLOQUE_O_TOKEN_DA_INSTANCIA_UAZAPI",
+    "number": "5511XXXXXXXXX",
+    "agent_id": "main",
+    "role": "secretary",
+    "lid": "LID_DO_NUMERO_NO_WHATSAPP"
+  }
+]

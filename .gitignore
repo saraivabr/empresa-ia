@@ -1,0 +1,63 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Secrets — NEVER commit these
+.env
+.env.local
+.env.production
+.env.development
+.env.staging
+*.pem
+*.key
+*.p12
+*.pfx
+.apikey
+.apisecret
+.webhook-secret
+credentials.json
+service-account.json
+.secrets/
+secrets/
+
+# Runtime data files (contain user data / tokens)
+instances.json
+empresaia-usage.json
+leads.json
+group-emps.json
+*.bak
+*.bak-*
+sessions/
+
+# Generated assets (run gen-*.js / gen-audios.py to reproduce)
+generated-carousel/
+generated/
+public/
+
+# Source maps
+*.map
+
+# OS / editor
+.DS_Store
+.remember/
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# PM2 — keep the example, ignore local customizations
+ecosystem.local.config.cjs
+ecosystem.aws-hermes.config.cjs
+
+# Keep examples
+!.env.example
+!instances.json.example
