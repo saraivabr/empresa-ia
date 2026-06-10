@@ -14,12 +14,12 @@ process.env.ASSET_BASE = 'http://assets.local/';
 process.env.ENABLE_SSE = '0';
 process.env.PREWARM_MS = '0';
 process.env.DEBOUNCE_MS = '10';
-process.env.OWNER_NUMBERS = '5519900000001';
+process.env.OWNER_NUMBERS = '5511991143605';
 
 writeFileSync(process.env.INSTANCES_FILE, JSON.stringify([
   {
     id: 'jesus',
-    number: '5519900000002',
+    number: '5511988642668',
     uazapi_url: 'http://127.0.0.1:9',
     uazapi_token: 'test-token',
   },
@@ -77,13 +77,13 @@ function startFakeUazapi() {
 test('extractText prefers concrete message text instead of object coercion', () => {
   assert.equal(bridge.extractText({
     message: {
-      key: { remoteJid: '5519900000001@s.whatsapp.net' },
+      key: { remoteJid: '5511991143605@s.whatsapp.net' },
       message: { conversation: '@apps' },
     },
   }), '');
 
   assert.equal(bridge.extractText({
-    key: { remoteJid: '5519900000001@s.whatsapp.net' },
+    key: { remoteJid: '5511991143605@s.whatsapp.net' },
     message: { conversation: '@apps' },
   }), '@apps');
 
@@ -97,7 +97,7 @@ test('iterMessages unwraps UAZAPI webhook payloads', () => {
   const payload = {
     event: 'messages',
     message: {
-      key: { remoteJid: '5519900000001@s.whatsapp.net', id: 'msg-1' },
+      key: { remoteJid: '5511991143605@s.whatsapp.net', id: 'msg-1' },
       message: { conversation: '@apps' },
     },
   };
@@ -108,7 +108,7 @@ test('iterMessages unwraps UAZAPI webhook payloads', () => {
 });
 
 test('@equipe abre a vitrine das 7 especialistas com botoes talk e call', () => {
-  const response = bridge.empresaiaResponseFor('@equipe', true, '5519900000001@s.whatsapp.net');
+  const response = bridge.empresaiaResponseFor('@equipe', true, '5511991143605@s.whatsapp.net');
 
   assert.ok(response);
   assert.ok(Array.isArray(response.carousel));
@@ -123,13 +123,13 @@ test('@equipe abre a vitrine das 7 especialistas com botoes talk e call', () => 
 
 test('texto livre nao empurra menu (pull-only) e vai pro agente', () => {
   // mensagens em linguagem natural devem retornar null para que a Sofia (agente) converse
-  assert.equal(bridge.empresaiaResponseFor('quero ver campanhas e cortar verba ruim', true, '5519900000001@s.whatsapp.net'), null);
-  assert.equal(bridge.empresaiaResponseFor('me liga sobre financeiro e caixa', true, '5519900000001@s.whatsapp.net'), null);
-  assert.equal(bridge.empresaiaResponseFor('oi tudo bem?', true, '5519900000001@s.whatsapp.net'), null);
+  assert.equal(bridge.empresaiaResponseFor('quero ver campanhas e cortar verba ruim', true, '5511991143605@s.whatsapp.net'), null);
+  assert.equal(bridge.empresaiaResponseFor('me liga sobre financeiro e caixa', true, '5511991143605@s.whatsapp.net'), null);
+  assert.equal(bridge.empresaiaResponseFor('oi tudo bem?', true, '5511991143605@s.whatsapp.net'), null);
 });
 
 test('@empresa abre a vitrine da equipe', () => {
-  const response = bridge.empresaiaResponseFor('@empresa', true, '5519900000001@s.whatsapp.net');
+  const response = bridge.empresaiaResponseFor('@empresa', true, '5511991143605@s.whatsapp.net');
 
   assert.ok(response);
   assert.equal(response.carousel.length, 7);
@@ -137,7 +137,7 @@ test('@empresa abre a vitrine da equipe', () => {
 });
 
 test('@resumo abre o relatorio do dia por setor', () => {
-  const response = bridge.empresaiaResponseFor('@resumo', true, '5519900000001@s.whatsapp.net');
+  const response = bridge.empresaiaResponseFor('@resumo', true, '5511991143605@s.whatsapp.net');
 
   assert.ok(response);
   assert.ok(Array.isArray(response.carousel));
@@ -151,19 +151,19 @@ test('dispatch sends @equipe as /send/carousel to UAZAPI', async () => {
   try {
     const inst = {
       id: 'jesus',
-      number: '5519900000002',
+      number: '5511988642668',
       uazapi_url: fake.url,
       uazapi_token: 'test-token',
     };
 
     await bridge.dispatch(inst, {
       key: {
-        remoteJid: '5519900000001@s.whatsapp.net',
+        remoteJid: '5511991143605@s.whatsapp.net',
         fromMe: false,
         id: 'msg-dispatch-apps',
       },
       message: { conversation: '@equipe' },
-      pushName: 'TestUser',
+      pushName: 'Saraiva',
     }, 'webhook');
 
     await sleep(80);
@@ -172,7 +172,7 @@ test('dispatch sends @equipe as /send/carousel to UAZAPI', async () => {
     assert.equal(fake.calls[0].method, 'POST');
     assert.equal(fake.calls[0].url, '/send/carousel');
     assert.equal(fake.calls[0].headers.token, 'test-token');
-    assert.equal(fake.calls[0].body.number, '5519900000001@s.whatsapp.net');
+    assert.equal(fake.calls[0].body.number, '5511991143605@s.whatsapp.net');
     assert.ok(Array.isArray(fake.calls[0].body.carousel));
     assert.ok(fake.calls[0].body.carousel[0].image.startsWith('http://assets.local/'));
     assert.equal(bridge.stats.answered, 1);
@@ -182,7 +182,7 @@ test('dispatch sends @equipe as /send/carousel to UAZAPI', async () => {
 });
 
 test('@funcionarios abre a vitrine com 7 especialistas', () => {
-  const response = bridge.empresaiaResponseFor('@funcionarios', true, '5519900000001@s.whatsapp.net');
+  const response = bridge.empresaiaResponseFor('@funcionarios', true, '5511991143605@s.whatsapp.net');
 
   assert.equal(bridge.employees.filter(e => !e.internal).length, 7);
   assert.ok(Array.isArray(response.carousel));
@@ -193,7 +193,7 @@ test('@funcionarios abre a vitrine com 7 especialistas', () => {
 });
 
 test('employee detail traz setor, solucao e acao de ligacao', () => {
-  const response = bridge.empresaiaResponseFor('employee_clara', true, '5519900000001@s.whatsapp.net');
+  const response = bridge.empresaiaResponseFor('employee_clara', true, '5511991143605@s.whatsapp.net');
 
   assert.ok(response);
   const card = response.carousel[0];
@@ -204,7 +204,7 @@ test('employee detail traz setor, solucao e acao de ligacao', () => {
 
 test('employee call variables include dynamic prompt and operational context', () => {
   const employee = bridge.employees.find(item => item.id === 'clara');
-  const vars = bridge.employeeVariables(employee, '5519900000001@s.whatsapp.net', { pushName: 'TestUser' }, 'call_employee_clara');
+  const vars = bridge.employeeVariables(employee, '5511991143605@s.whatsapp.net', { pushName: 'Saraiva' }, 'call_employee_clara');
 
   assert.equal(vars.employee_id, 'clara');
   assert.equal(vars.employee_name, 'Clara');
@@ -213,9 +213,9 @@ test('employee call variables include dynamic prompt and operational context', (
   assert.equal(vars.mission, employee.mission);
   assert.equal(vars.solution, employee.solution);
   assert.equal(vars.insight, employee.insight);
-  assert.equal(vars.customer_phone, '+5519900000001');
-  assert.equal(vars.customer_name, 'TestUser');
-  assert.equal(vars.whatsapp_chatid, '5519900000001@s.whatsapp.net');
+  assert.equal(vars.customer_phone, '+5511991143605');
+  assert.equal(vars.customer_name, 'Saraiva');
+  assert.equal(vars.whatsapp_chatid, '5511991143605@s.whatsapp.net');
   assert.equal(vars.trigger_text, 'call_employee_clara');
   assert.match(vars.dynamic_prompt, /Voce e Clara/);
   assert.match(vars.dynamic_prompt, /Nunca finja acesso/);
@@ -224,16 +224,16 @@ test('employee call variables include dynamic prompt and operational context', (
 
 test('employee WavoIP call payload carries WhatsApp voice context', () => {
   const employee = bridge.employees.find(item => item.id === 'clara');
-  const payload = bridge.employeeWavoCallPayload(employee, '5519900000001@s.whatsapp.net', { pushName: 'TestUser' }, 'call_employee_clara');
+  const payload = bridge.employeeWavoCallPayload(employee, '5511991143605@s.whatsapp.net', { pushName: 'Saraiva' }, 'call_employee_clara');
 
-  assert.equal(payload.to, '+5519900000001');
-  assert.equal(payload.phone, '+5519900000001');
-  assert.equal(payload.number, '5519900000001');
+  assert.equal(payload.to, '+5511991143605');
+  assert.equal(payload.phone, '+5511991143605');
+  assert.equal(payload.number, '5511991143605');
   assert.equal(payload.channel, 'whatsapp');
   assert.equal(payload.source, 'empresaia_whatsapp_carousel');
   assert.equal(payload.employee_id, 'clara');
   assert.equal(payload.variables.employee_name, 'Clara');
-  assert.equal(payload.dynamic_variables.whatsapp_chatid, '5519900000001@s.whatsapp.net');
+  assert.equal(payload.dynamic_variables.whatsapp_chatid, '5511991143605@s.whatsapp.net');
   assert.equal(payload.conversation_initiation_client_data.dynamic_variables.employee_id, 'clara');
   assert.match(payload.variables.dynamic_prompt, /Voce e Clara/);
 });
@@ -250,19 +250,19 @@ test('dispatch starts the call via autocalls when employee call button is clicke
   try {
     const inst = {
       id: 'jesus',
-      number: '5519900000002',
+      number: '5511988642668',
       uazapi_url: fake.url,
       uazapi_token: 'test-token',
     };
 
     await bridge.dispatch(inst, {
       key: {
-        remoteJid: '5519900000001@s.whatsapp.net',
+        remoteJid: '5511991143605@s.whatsapp.net',
         fromMe: false,
         id: 'msg-dispatch-call-clara',
       },
       buttonOrListid: 'call_employee_clara',
-      pushName: 'TestUser',
+      pushName: 'Saraiva',
     }, 'webhook');
 
     const callRequest = await waitUntil(() => fake.calls.find(call => call.url === '/api/user/make_call'));
@@ -271,11 +271,11 @@ test('dispatch starts the call via autocalls when employee call button is clicke
     assert.ok(callRequest);
     assert.equal(callRequest.method, 'POST');
     assert.equal(callRequest.headers.authorization, 'Bearer test-autocalls-key');
-    assert.equal(callRequest.body.phone_number, '+5519900000001');
+    assert.equal(callRequest.body.phone_number, '+5511991143605');
     assert.equal(callRequest.body.assistant_id, 42);
     assert.equal(callRequest.body.variables.employee_id, 'clara');
     assert.equal(callRequest.body.variables.employee_name, 'Clara');
-    assert.equal(callRequest.body.variables.whatsapp_chatid, '5519900000001@s.whatsapp.net');
+    assert.equal(callRequest.body.variables.whatsapp_chatid, '5511991143605@s.whatsapp.net');
     assert.equal(callRequest.body.variables.trigger_text, 'call_employee_clara');
     assert.match(callRequest.body.variables.dynamic_prompt, /Voce e Clara/);
     assert.ok(whatsappAck);
@@ -301,19 +301,19 @@ test('dispatch reports call setup gap without exposing internal provider details
   try {
     const inst = {
       id: 'jesus',
-      number: '5519900000002',
+      number: '5511988642668',
       uazapi_url: fake.url,
       uazapi_token: 'test-token',
     };
 
     await bridge.dispatch(inst, {
       key: {
-        remoteJid: '5519900000003@s.whatsapp.net',
+        remoteJid: '5511991143606@s.whatsapp.net',
         fromMe: false,
         id: 'msg-dispatch-call-clara-missing-wavoip',
       },
       buttonOrListid: 'call_employee_clara',
-      pushName: 'TestUser',
+      pushName: 'Saraiva',
     }, 'webhook');
 
     assert.ok(!fake.calls.some(call => call.url === '/api/user/make_call'));
@@ -345,13 +345,13 @@ test('post-call webhook payload resolves employee and extracted summary', () => 
     input_variables: {
       employee_id: 'clara',
       employee_name: 'Clara',
-      whatsapp_chatid: '5519900000001@s.whatsapp.net',
+      whatsapp_chatid: '5511991143605@s.whatsapp.net',
     },
     formatted_transcript: 'AI: Oi, aqui e Clara.\nCliente: Pode mandar.',
   });
 
   assert.equal(context.employee.name, 'Clara');
-  assert.equal(context.input.whatsapp_chatid, '5519900000001@s.whatsapp.net');
+  assert.equal(context.input.whatsapp_chatid, '5511991143605@s.whatsapp.net');
   assert.equal(context.extracted.status, true);
   assert.match(context.transcript, /Pode mandar/);
 });
@@ -364,7 +364,7 @@ test('mid-call tool returns employee guidance without forcing whatsapp send', as
     next_step: 'separar cobrancas de alto valor para hoje',
     urgency: 8,
     input_variables: {
-      whatsapp_chatid: '5519900000001@s.whatsapp.net',
+      whatsapp_chatid: '5511991143605@s.whatsapp.net',
     },
   });
 
@@ -380,19 +380,19 @@ test('talk_<id> envia audio de voz (ptt) da especialista e abre o detalhe', asyn
   try {
     const inst = {
       id: 'jesus',
-      number: '5519900000002',
+      number: '5511988642668',
       uazapi_url: fake.url,
       uazapi_token: 'test-token',
     };
 
     await bridge.dispatch(inst, {
       key: {
-        remoteJid: '5519900000099@s.whatsapp.net',
+        remoteJid: '5511991143699@s.whatsapp.net',
         fromMe: false,
         id: 'msg-talk-clara',
       },
       buttonOrListid: 'talk_clara',
-      pushName: 'TestUser',
+      pushName: 'Saraiva',
     }, 'webhook');
 
     const media = await waitUntil(() => fake.calls.find(call => call.url === '/send/media'));
