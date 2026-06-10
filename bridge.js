@@ -2266,6 +2266,7 @@ async function criarGruposRelatorio(inst) {
       const jid = grp?.JID || grp?.jid || grp?.id;
       if (!jid) { log(`[report] criar "${name}" sem JID`); continue; }
       g[key] = jid;
+      registrarGrupo(jid, { nome: name, proposito: `painel de ${key}` });
       try { await uaz(inst).post('/group/updateParticipants', { groupjid: jid, action: 'promote', participants }); } catch {}
       try { await uaz(inst).post('/send/text', { number: jid, text: boasVindas }); } catch {}
       log(`[report] grupo ${key} criado: ${jid}`);
@@ -2538,8 +2539,15 @@ async function enviarRelatorioMetricas(inst, motivo = 'cron') {
     let sent = 0;
     if (validos.length >= 2) {
       const legenda = leitura || `📊 Relatório do dia — ${m.followers} seguidores (${deltaSeg >= 0 ? '+' : ''}${deltaSeg}).`;
+      // cada card PRECISA de >=1 botão senão o WhatsApp rejeita o carrossel
+      const perfilUrl = META_IG_ID ? 'https://instagram.com/saraiva.ai' : '';
+      const botoesCard = (i) => {
+        if (i === 0 && perfilUrl) return [{ id: perfilUrl, text: '📲 Ver no Instagram', type: 'URL' }];
+        return [{ id: '@metricas', text: '🔄 Atualizar', type: 'REPLY' }];
+      };
       const carrossel = {
-        carousel: validos.map((url, i) => ({ text: i === 0 ? legenda.slice(0, 1024) : '', image: url, buttons: [] })),
+        text: leitura ? leitura.split('\n')[0].slice(0, 200) : '📊 Relatório do dia',
+        carousel: validos.map((url, i) => ({ text: i === 0 ? legenda.slice(0, 1024) : '', image: url, buttons: botoesCard(i) })),
         readchat: true, delay: 0,
       };
       sent = (await sendPart(inst, dest, carrossel)) || 0;
@@ -2695,6 +2703,53 @@ const GROUP_EMP_FILE = process.env.GROUP_EMP_FILE || '/opt/empresa-ia/group-emps
 function loadGroupEmps() { try { return JSON.parse(fs.readFileSync(GROUP_EMP_FILE, 'utf8')); } catch { return {}; } }
 function setGroupEmp(jid, empId) { const a = loadGroupEmps(); a[onlyDigits(jid) || jid] = empId; try { fs.writeFileSync(GROUP_EMP_FILE, JSON.stringify(a, null, 2)); } catch (e) { log('[group-emp] save erro: ' + e.message); } }
 function getGroupEmp(jid) { const a = loadGroupEmps(); return a[onlyDigits(jid) || jid] || a[jid] || null; }
+
+// ---------- gestão de conhecimento dos grupos: o sistema LEMBRA de cada grupo ----------
+// Resolve o bug "criei o grupo e não acho ele": ao criar/ver um grupo, guarda jid+nome+propósito.
+// A busca consulta ESTE registro primeiro (pega grupo recém-criado, que /chat/find ainda não indexou).
+const GRUPOS_FILE = process.env.GRUPOS_FILE || '/opt/empresa-ia/grupos-conhecidos.json';
+function loadGrupos() { try { return JSON.parse(fs.readFileSync(GRUPOS_FILE, 'utf8')); } catch { return {}; } }
+function registrarGrupo(jid, { nome = '', proposito = '', emp = '' } = {}) {
+  if (!jid) return;
+  const g = loadGrupos();
+  const k = String(jid);
+  g[k] = { jid: k, nome: nome || g[k]?.nome || '', proposito: proposito || g[k]?.proposito || '', emp: emp || g[k]?.emp || '', visto: new Date().toISOString() };
+  try { fs.writeFileSync(GRUPOS_FILE, JSON.stringify(g, null, 1)); } catch (e) { log('[grupos] save erro: ' + e.message); }
+}
+// acha um grupo por JID, nome (registro conhecido), depois /group/list, depois /chat/find. Robusto.
+async function acharGrupo(inst, termo) {
+  const t = String(termo || '').trim();
+  if (!t) return '';
+  if (/@g\.us$/.test(t)) return t;                       // já é JID
+  const norm = s => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  const alvo = norm(t);
+  // 1) registro de grupos conhecidos (inclui recém-criados) — match exato e depois parcial
+  const conhecidos = Object.values(loadGrupos());
+  let m = conhecidos.find(g => norm(g.nome) === alvo) || conhecidos.find(g => norm(g.nome).includes(alvo) && alvo.length >= 3);
+  if (m) return m.jid;
+  // 2) lista de grupos da instância (força refresh — pega grupo novo) e registra todos
+  try {
+    const { data } = await uaz(inst).post('/group/list', { force: true, noParticipants: true, pageSize: 500 });
+    const grupos = Array.isArray(data) ? data : (data?.groups || data?.items || data?.data || []);
+    for (const gr of (grupos || [])) {
+      const jid = gr.JID || gr.jid || gr.id; const nome = gr.Name || gr.name || gr.subject || '';
+      if (jid) registrarGrupo(jid, { nome });
+    }
+    const achado = (grupos || []).find(gr => norm(gr.Name || gr.name || gr.subject) === alvo)
+      || (grupos || []).find(gr => norm(gr.Name || gr.name || gr.subject).includes(alvo) && alvo.length >= 3);
+    if (achado) return achado.JID || achado.jid || achado.id;
+  } catch (e) { log('[grupos] /group/list falhou:', e.response?.status || e.message); }
+  // 3) fallback: chat/find (contatos + grupos indexados)
+  try {
+    const { data } = await uaz(inst).post('/chat/find', { sort: '-wa_lastMsgTimestamp', limit: 300 });
+    const chats = Array.isArray(data) ? data : (data?.chats || data?.items || data?.data || []);
+    const c = (chats || []).find(c => norm(c.wa_contactName || c.name || c.wa_name || c.lead_name) === alvo)
+      || (chats || []).find(c => norm(c.wa_contactName || c.name || c.wa_name || c.lead_name).includes(alvo) && alvo.length >= 3);
+    if (c) return String(c.wa_chatid || c.chatid || c.id || '');
+  } catch (e) { log('[grupos] /chat/find falhou:', e.response?.status || e.message); }
+  return '';
+}
+function getGrupoInfo(jid) { return loadGrupos()[String(jid)] || null; }
 // porta-voz ATIVA do grupo (pode mudar conforme o assunto) — separada da DONA do grupo,
 // senão "assumir" transformaria qualquer grupo em grupo dedicado (responderia tudo sem menção).
 const GROUP_SPK_FILE = process.env.GROUP_SPK_FILE || '/opt/empresa-ia/group-speakers.json';
@@ -2725,6 +2780,7 @@ async function criarGrupoDedicado(inst, emp, assunto, leadChatid) {
   const groupJid = group?.JID || group?.jid || group?.id;
   if (!groupJid) { log('[create_group] sem JID na resposta'); return null; }
   setGroupEmp(groupJid, emp.id); // grava quem é a dona deste grupo
+  registrarGrupo(groupJid, { nome: name, proposito: assunto || setorLabel, emp: emp.id }); // conhece o grupo NA HORA (resolve "criei e não acho")
   // o DONO entra como ADMINISTRADOR (o bot é admin por ter criado o grupo)
   try {
     const owners = OWNER.map(onlyDigits).filter(Boolean);
@@ -2804,14 +2860,9 @@ async function runAction(inst, action, chatid = null, senderIsOwner = false) {
       } else if (/^\+?[\d\s()-]+$/.test(alvoRaw) && onlyDigits(alvoRaw).length >= 10) {
         dest = onlyDigits(alvoRaw) + '@s.whatsapp.net';
       } else {
-        // busca por NOME entre os chats da instância (grupos e contatos)
-        try {
-          const { data } = await uaz(inst).post('/chat/find', { sort: '-wa_lastMsgTimestamp', limit: 200 });
-          const chats = Array.isArray(data) ? data : (data?.chats || data?.items || data?.data || []);
-          const alvo = alvoRaw.toLowerCase();
-          const m = (chats || []).find(c => String(c.wa_contactName || c.name || c.wa_name || c.lead_name || '').toLowerCase().includes(alvo));
-          if (m) dest = String(m.wa_chatid || m.chatid || m.id || '');
-        } catch (e) { log('[enviar_grupo] busca falhou:', e.response?.status || e.message); }
+        // busca ROBUSTA: registro de grupos conhecidos -> /group/list -> /chat/find
+        // (resolve o grupo recém-criado que o /chat/find ainda não indexou)
+        dest = await acharGrupo(inst, alvoRaw);
       }
       if (!dest) {
         if (chatid) await sendText(inst, chatid, `Não achei o chat/grupo "${alvoRaw}" aqui 🙈 Confere o nome exato pra mim?`);
@@ -3315,6 +3366,18 @@ async function handle(inst, chatid, data, text) {
     stats.answered++; stats.lastAnswerAt = new Date().toISOString();
     return;
   }
+  // @grupos (dono): lista os grupos que o sistema conhece (com propósito e dona)
+  if (!grupo && isOwnerChatid(chatid) && /^@grupos\b/i.test(trimmedText)) {
+    await acharGrupo(inst, '__sync__').catch(() => {}); // refresh antes de listar
+    const gs = Object.values(loadGrupos()).filter(g => /@g\.us$/.test(g.jid));
+    const linhas = gs.slice(0, 25).map(g => {
+      const dona = g.emp ? employeesById.get(g.emp)?.name : '';
+      return `• *${g.nome || '(sem nome)'}*${dona ? ` — ${dona}` : ''}${g.proposito ? `\n   ↳ ${g.proposito}` : ''}`;
+    }).join('\n');
+    await sendText(inst, chatid, `📋 *Grupos que eu conheço* (${gs.length})\n\n${linhas || '(nenhum ainda)'}`, extractMsgId(data));
+    stats.answered++; stats.lastAnswerAt = new Date().toISOString();
+    return;
+  }
   // @agenda (dono): mostra os próximos Reels agendados e o status da fila
   if (!grupo && isOwnerChatid(chatid) && /^@agenda\b/i.test(trimmedText)) {
     const fila = loadSchedule();
@@ -3378,6 +3441,11 @@ async function handle(inst, chatid, data, text) {
   if (grupo) {
     const hist = await fetchGroupHistory(inst, chatid, 12);
     const ctx = hist.length ? `Conversa recente no grupo:\n${hist.join('\n')}\n\n` : '';
+    // aprende este grupo (nome do payload) e injeta o PROPÓSITO conhecido no contexto
+    const nomeGrupo = data.chatName || data.groupName || data.subject || data.wa_name || '';
+    if (nomeGrupo) registrarGrupo(chatid, { nome: nomeGrupo });
+    const gInfo = getGrupoInfo(chatid);
+    const propGrupo = gInfo?.proposito ? `\n[ESTE GRUPO: "${gInfo.nome || nomeGrupo}" — criado para: ${gInfo.proposito}. Mantenha o foco nisso.]` : '';
     const gOwnerId = getGroupEmp(chatid);
     const gSpkId = getGroupSpeaker(chatid);
     // quem FALA agora: porta-voz ativa (se trocou) > dona do grupo
@@ -3423,7 +3491,7 @@ async function handle(inst, chatid, data, text) {
     // diário da empresa: dono vê TUDO; cliente em grupo dedicado vê só o que é do chat dele
     const senderEhDono = OWNER.includes(onlyDigits(extractSenderChatid(data) || ''));
     const diario = gEmp ? diarioEmpresa({ paraDono: senderEhDono, chatid, limite: senderEhDono ? 12 : 5 }) : '';
-    header = `[${ctx}${personaHint}${handoffHint}${boldHint}${nome || 'Alguém'} falou com você no grupo. Responda no grupo, direto e curto, no contexto acima.]${zapPessoal}${diario}\n${ficha}`;
+    header = `[${ctx}${personaHint}${handoffHint}${boldHint}${nome || 'Alguém'} falou com você no grupo. Responda no grupo, direto e curto, no contexto acima.]${propGrupo}${zapPessoal}${diario}\n${ficha}`;
   } else {
     const diario = isOwnerChatid(chatid)
       ? diarioEmpresa({ paraDono: true, limite: 12 })
@@ -3784,6 +3852,9 @@ function startBridge() {
   startDudaDigest();
   startIgAutoreply();
   startAgendador(CFG[0]);
+  // sincroniza o conhecimento de grupos no boot e a cada 30min (aprende grupos que entrou)
+  const sincGrupos = async () => { try { await acharGrupo(CFG[0], '__sync__'); } catch {} };
+  setTimeout(sincGrupos, 15000); setInterval(sincGrupos, 30 * 60 * 1000).unref?.();
   startRelatorioMetricas(CFG[0]);
   const server = startHttpServer();
   log('Empresa.ia bridge no ar. Instâncias:', CFG.map(i => i.id).join(', '),
