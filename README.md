@@ -10,7 +10,9 @@
 
 Criado por Fellipe Saraiva, no Brasil, para a realidade de quem vende, atende e opera pelo WhatsApp.
 
-Nao e chatbot. Nao e menu de opcoes. E um time de funcionarias de IA que toca a operacao do seu negocio direto no WhatsApp, com voz, personalidade e contexto real.
+Na pratica, e uma empresa virtual dentro do seu WhatsApp: a Sofia recebe as mensagens, entende o que a pessoa precisa e chama a especialista certa para vender, atender, organizar, cobrar, postar ou te ligar com voz natural.
+
+Nao e chatbot. Nao e menu de opcoes. Nao e so uma automacao de resposta. E um time de funcionarias de IA trabalhando em setores da sua empresa, com nome, voz, personalidade, memoria e contexto real.
 
 **O software e aberto. O atalho e pago.**
 
@@ -22,18 +24,63 @@ Empresa.ia e open-source e gratuito para qualquer pessoa usar, estudar, modifica
 
 ## O Que E
 
-A Empresa.ia e o primeiro sistema operacional agentico brasileiro para WhatsApp: uma camada de execucao onde humanos decidem, agentes executam e o dono acompanha tudo pela conversa.
+A Empresa.ia e o primeiro sistema operacional agentico brasileiro para WhatsApp.
 
-Imagine ter uma equipe completa que:
+Ela transforma o WhatsApp em uma camada de operacao: humanos decidem, agentes executam e o dono acompanha tudo pela conversa.
 
-- atende seu WhatsApp e responde como uma pessoa real, de nome, sem dizer "sou um robo";
-- liga para clientes com voz natural e, durante a ligacao, envia links e carrosseis no WhatsApp;
-- entende audio, imagem e video;
-- conecta com Gmail, Google Agenda, Sheets e Drive;
-- qualifica leads, salva no CRM e aciona a especialista certa automaticamente;
-- entrega relatorios por setor em carrosseis simples de aprovar.
+Em vez de criar um robo para responder perguntas, voce cria uma equipe:
+
+- Sofia recebe, entende e direciona.
+- Clara cuida de vendas, leads, propostas e follow-up.
+- Maya organiza atendimento e clientes sem resposta.
+- Bia ajuda com conteudo, posts e comentarios.
+- Helena olha caixa, atrasos e cobrancas.
+- Lara encontra processos travados.
+- Nina organiza rotina e prioridades.
+
+O dono nao precisa abrir um painel. Ele conversa.
+
+Exemplo:
+
+1. Um cliente chama no WhatsApp perguntando preco.
+2. Sofia entende o assunto e chama Maya ou Clara.
+3. A especialista responde, qualifica e oferece o proximo passo.
+4. Se fizer sentido, ela liga por voz.
+5. Durante a ligacao, envia link, card, resumo ou carrossel no WhatsApp.
+6. O lead fica salvo, com contexto, status e proxima acao.
+7. O dono recebe um resumo do que aconteceu e aprova o que for sensivel.
+
+O sistema entende texto, audio, imagem e video. Tambem pode conectar Gmail, Agenda, Sheets, Drive, CRM e outras fontes para puxar dados reais antes de responder.
 
 Tudo isso no WhatsApp. Sem app novo. Sem onboarding complicado. Manda um "oi" e a Sofia recebe.
+
+---
+
+## O Que Ele Faz Na Pratica
+
+### Para vendas
+
+Clara identifica leads quentes, propostas paradas e conversas sem proximo passo. Ela pode sugerir follow-ups, qualificar interessados, preparar respostas e pedir aprovacao antes de acionar o cliente.
+
+### Para atendimento
+
+Maya organiza a fila do WhatsApp, encontra quem ficou sem resposta e ajuda a responder com contexto. A ideia e acabar com cliente perdido no meio da conversa.
+
+### Para conteudo
+
+Bia transforma duvidas, objeccoes e conversas reais em ideias de post, roteiro, carrossel e resposta para comentarios.
+
+### Para financeiro
+
+Helena ajuda a enxergar entradas, atrasos, cobrancas e pendencias. Quando existe fonte conectada, ela puxa dados reais; quando nao existe, ela pede a conexao certa.
+
+### Para operacao
+
+Lara mapeia tarefas paradas, gargalos e processos repetitivos que podem virar rotina agentica.
+
+### Para rotina
+
+Nina ajuda o dono a decidir por onde comecar o dia, quais pendencias atacar e quais assuntos precisam de aprovacao humana.
 
 ---
 

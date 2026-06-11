@@ -6,7 +6,9 @@ Documento operacional para vender em volta da Empresa.ia deste repositorio: o pr
 
 ### Frase curta
 
-Empresa.ia e o primeiro sistema operacional agentico brasileiro para WhatsApp: uma equipe de IA open-source para atender, vender, organizar e reportar a operacao da empresa.
+Empresa.ia e uma empresa virtual dentro do WhatsApp: Sofia recebe, entende o que a pessoa precisa e chama especialistas de IA para vender, atender, organizar, cobrar, postar e reportar a operacao.
+
+Em termos de categoria: e o primeiro sistema operacional agentico brasileiro para WhatsApp.
 
 ### O que nao vender
 
@@ -40,6 +42,16 @@ Criado por Fellipe Saraiva, no Brasil, para a realidade de quem vende, atende e 
 
 O codigo e aberto. O sistema e gratuito. O atalho e pago: Comunidade Saraiva, implementacao e operacao assistida.
 
+### Explicacao simples
+
+Pensa em uma empresa dentro do seu WhatsApp.
+
+Quando alguem chama, a Sofia recebe. Se o assunto e venda, entra a Clara. Se e atendimento, entra a Maya. Se e conteudo, entra a Bia. Se e financeiro, entra a Helena. Se e operacao, entra a Lara. Se e rotina, entra a Nina.
+
+Elas conversam, entendem audio, imagem e video, podem puxar dados de ferramentas conectadas, preparar respostas, gerar relatorios, ligar por voz e pedir aprovacao humana antes de qualquer acao sensivel.
+
+Nao e um bot respondendo perguntas. E uma camada de execucao para a empresa.
+
 ### Versao curta
 
 O primeiro sistema operacional agentico brasileiro para WhatsApp.
@@ -47,6 +59,10 @@ O primeiro sistema operacional agentico brasileiro para WhatsApp.
 ### Versao de venda
 
 Voce pode usar a Empresa.ia de graca porque o codigo e aberto. O que a gente vende nao e acesso: e caminho, criterio e velocidade para transformar isso na operacao real da sua empresa.
+
+### Versao leiga
+
+E como contratar uma mini-equipe digital para trabalhar no seu WhatsApp: uma pessoa recebe, outra vende, outra atende, outra organiza, outra cuida do conteudo e outra te mostra o que esta acontecendo. A diferenca e que essa equipe e feita de agentes de IA, funciona por conversa e voce continua aprovando o que importa.
 
 ### Estrategia open-source
 
