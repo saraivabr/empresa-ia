@@ -12,6 +12,10 @@ Criado por Fellipe Saraiva, no Brasil, para a realidade de quem vende, atende e 
 
 Na pratica, e uma empresa virtual dentro do seu WhatsApp: a Sofia recebe as mensagens, entende o que a pessoa precisa e chama a especialista certa para vender, atender, organizar, cobrar, postar ou te ligar com voz natural.
 
+Cada grupo vira uma nova conversa. Cada conversa vira uma missao. Cada missao tem contexto, dona, historico, proximo passo e capacidade de execucao.
+
+O futuro chegou.
+
 Nao e chatbot. Nao e menu de opcoes. Nao e so uma automacao de resposta. E um time de funcionarias de IA trabalhando em setores da sua empresa, com nome, voz, personalidade, memoria e contexto real.
 
 **O software e aberto. O atalho e pago.**
@@ -57,6 +61,22 @@ Tudo isso no WhatsApp. Sem app novo. Sem onboarding complicado. Manda um "oi" e 
 ---
 
 ## O Que Ele Faz Na Pratica
+
+### Transforma grupos em missoes
+
+Um grupo deixa de ser so conversa solta.
+
+Na Empresa.ia, cada grupo pode ter uma dona, um proposito e uma missao:
+
+- um grupo de vendas vira uma missao da Clara;
+- um grupo de atendimento vira uma missao da Maya;
+- um grupo de conteudo vira uma missao da Bia;
+- um grupo financeiro vira uma missao da Helena;
+- um grupo de operacao vira uma missao da Lara.
+
+A partir dai, a especialista responde naquele contexto, lembra o objetivo do grupo, entende o historico recente e pode continuar a execucao sem recomecar do zero.
+
+O WhatsApp deixa de ser uma lista infinita de conversas e vira um mapa vivo da operacao.
 
 ### Para vendas
 
@@ -184,6 +204,16 @@ Gmail, Google Agenda, Google Sheets e Drive via Composio/OpenClaw. A Sofia conec
 ### Grupos dedicados
 
 Cria grupos no WhatsApp, adiciona o dono como admin, nomeia, coloca icone e atende direto ali.
+
+Cada grupo dedicado registra:
+
+- dona responsavel;
+- proposito;
+- historico recente;
+- assunto principal;
+- proxima missao.
+
+Quando um assunto ja tem grupo dedicado, a Empresa.ia entrega o trabalho la. A conversa principal recebe so um retorno curto. Isso separa contexto, reduz bagunca e transforma conversa em execucao.
 
 ### Mini-CRM de leads
 

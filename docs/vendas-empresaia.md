@@ -8,6 +8,8 @@ Documento operacional para vender em volta da Empresa.ia deste repositorio: o pr
 
 Empresa.ia e uma empresa virtual dentro do WhatsApp: Sofia recebe, entende o que a pessoa precisa e chama especialistas de IA para vender, atender, organizar, cobrar, postar e reportar a operacao.
 
+Cada grupo vira uma nova conversa. Cada conversa vira uma missao. Cada missao tem contexto, dona, historico e proximo passo.
+
 Em termos de categoria: e o primeiro sistema operacional agentico brasileiro para WhatsApp.
 
 ### O que nao vender
@@ -52,6 +54,8 @@ Elas conversam, entendem audio, imagem e video, podem puxar dados de ferramentas
 
 Nao e um bot respondendo perguntas. E uma camada de execucao para a empresa.
 
+O futuro chegou: o WhatsApp deixa de ser caixa de entrada e vira mapa operacional. Cada grupo pode ser um setor, um cliente, uma venda, uma cobranca, uma entrega ou uma rotina, com uma especialista responsavel e uma missao clara.
+
 ### Versao curta
 
 O primeiro sistema operacional agentico brasileiro para WhatsApp.
@@ -63,6 +67,8 @@ Voce pode usar a Empresa.ia de graca porque o codigo e aberto. O que a gente ven
 ### Versao leiga
 
 E como contratar uma mini-equipe digital para trabalhar no seu WhatsApp: uma pessoa recebe, outra vende, outra atende, outra organiza, outra cuida do conteudo e outra te mostra o que esta acontecendo. A diferenca e que essa equipe e feita de agentes de IA, funciona por conversa e voce continua aprovando o que importa.
+
+Cada grupo vira uma sala de trabalho. A sala tem assunto, responsavel e missao. Em vez de perder informacao em mensagens soltas, a Empresa.ia transforma conversa em execucao.
 
 ### Estrategia open-source
 
