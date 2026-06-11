@@ -6,156 +6,220 @@
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-uazapi-25D366.svg)](https://uazapi.com/)
 [![Open Source](https://img.shields.io/badge/open--source-gratuito-brightgreen.svg)](#)
 
-> **O sistema operacional que vive dentro do WhatsApp.**
+> O sistema operacional que vive dentro do WhatsApp.
 
-Não é chatbot. Não é menu de opções. É um **time de funcionárias de IA** que toca a operação do seu negócio direto no WhatsApp — com voz, personalidade e contexto real.
+Nao e chatbot. Nao e menu de opcoes. E um time de funcionarias de IA que toca a operacao do seu negocio direto no WhatsApp, com voz, personalidade e contexto real.
+
+**O software e aberto. O atalho e pago.**
+
+Empresa.ia e open-source e gratuito para qualquer pessoa usar, estudar, modificar e adaptar. A Comunidade Saraiva, a implementacao e a operacao assistida existem para quem quer aprender mais rapido, implantar com criterio ou evoluir a operacao sem montar tudo sozinho.
 
 ---
 
-## O que é a Empresa.ia
+## O Que E
 
 Imagine ter uma equipe completa que:
 
-- **Atende** seu WhatsApp e responde como uma pessoa real, de nome, sem nunca dizer "sou um robô"
-- **Liga** pra seus clientes com voz natural e latência baixa — e, durante a ligação, já manda links e carrosséis no WhatsApp deles
-- **Entende** áudio (transcrição), imagem e vídeo que você mandar
-- **Conecta** com Gmail, Google Agenda, Sheets e Drive
-- **Qualifica leads**, salva no CRM e aciona a especialista certa automaticamente
+- atende seu WhatsApp e responde como uma pessoa real, de nome, sem dizer "sou um robo";
+- liga para clientes com voz natural e, durante a ligacao, envia links e carrosseis no WhatsApp;
+- entende audio, imagem e video;
+- conecta com Gmail, Google Agenda, Sheets e Drive;
+- qualifica leads, salva no CRM e aciona a especialista certa automaticamente;
+- entrega relatorios por setor em carrosseis simples de aprovar.
 
-Tudo isso no WhatsApp. Sem app novo. Sem onboarding complicado. Só manda um **"oi"**.
+Tudo isso no WhatsApp. Sem app novo. Sem onboarding complicado. Manda um "oi" e a Sofia recebe.
+
+---
+
+## Por Que Open-Source
+
+Publicar a Empresa.ia no GitHub nao enfraquece o negocio. Fortalece.
+
+Codigo aberto cria confianca, reduz dependencia, permite auditoria, atrai operadores e ajuda a criar a categoria de empresas agenticas. Ninguem precisa pagar para acessar o sistema. O valor comercial esta no caminho:
+
+- aprender com a Comunidade Saraiva;
+- implementar no negocio real;
+- adaptar linguagem, setores e processos;
+- conectar dados e ferramentas;
+- evoluir a operacao com acompanhamento.
+
+---
+
+## Como O Projeto Se Sustenta
+
+### 1. Sistema completo gratuito
+
+Qualquer pessoa pode usar, estudar e adaptar a Empresa.ia.
+
+### 2. Comunidade Saraiva
+
+Para quem quer aprender a operar melhor:
+
+- playbooks;
+- bastidores;
+- exemplos reais;
+- encontros;
+- modelos de agentes e setores;
+- desafios de implementacao;
+- evolucao junto com outros operadores.
+
+### 3. Implementacao
+
+Para quem quer a Empresa.ia funcionando no proprio negocio sem montar tudo sozinho:
+
+- diagnostico dos gargalos;
+- organograma agentico inicial;
+- escolha dos setores prioritarios;
+- Sofia adaptada ao negocio;
+- fluxos de atendimento, vendas e handoff;
+- scripts e contexto do cliente;
+- treinamento do dono e da equipe.
+
+### 4. Operacao assistida / War Room
+
+Para quem quer evoluir continuamente:
+
+- novos setores;
+- integracoes;
+- relatorios;
+- melhoria de funil;
+- ajustes de atendimento e vendas;
+- acompanhamento estrategico.
+
+O playbook comercial completo esta em [docs/vendas-empresaia.md](docs/vendas-empresaia.md).
 
 ---
 
 ## A Equipe
 
-Quem trabalha pra você:
-
 | Nome | Setor | O que faz |
 |------|-------|-----------|
-| **Sofia** | Gerência | Anfitriã — recebe, entende e conecta com a especialista certa |
-| **Bia** | Redes Sociais | Posts, comentários, pauta de conteúdo |
-| **Clara** | Vendas | Leads, propostas paradas, fechamento |
-| **Maya** | Atendimento | Fila do WhatsApp, quem ficou sem resposta |
-| **Helena** | Financeiro | Caixa, atrasos, cobranças |
-| **Lara** | Operação | Processos, tarefas, o que trava o dia |
-| **Nina** | Rotina | Agenda, prioridade da manhã |
-| **Alice** | Onboarding | Recebe, configura, personaliza |
-| **Dani** | Desenvolvimento | Integrações e automações técnicas |
+| Sofia | Gerencia | Recebe, entende e conecta com a especialista certa |
+| Bia | Redes Sociais | Posts, comentarios, pauta de conteudo |
+| Clara | Vendas | Leads, propostas paradas, fechamento |
+| Maya | Atendimento | Fila do WhatsApp, quem ficou sem resposta |
+| Helena | Financeiro | Caixa, atrasos, cobrancas |
+| Lara | Operacao | Processos, tarefas, o que trava o dia |
+| Nina | Rotina | Agenda, prioridade da manha |
+| Alice | Onboarding | Recebe, configura, personaliza |
+| Dani | Desenvolvimento | Integracoes e automacoes tecnicas |
 
-Cada uma tem voz própria (Gemini TTS), áudio de apresentação, e uma personalidade consistente — tanto no WhatsApp quanto nas ligações.
+Cada uma tem voz propria, audio de apresentacao e personalidade consistente no WhatsApp e nas ligacoes.
 
 ---
 
-## Capacidades ("apps do sistema")
+## Capacidades
 
 ### Conversa humana no WhatsApp
-O cérebro é o **OpenClaw** (agente), com sessão por contato. A Sofia recebe, entende o contexto e traz a especialista certa — sem menu, sem robô, sem script engessado.
 
-### Ligação por voz
-A IA **liga** pra pessoa. Voz natural com baixa latência via **LiveKit + Gemini native-audio**. O diferencial: durante a ligação, ela envia mensagens, links e carrosséis no WhatsApp do cliente ao vivo (ferramenta `pedir_para_empresaia`). Inclui uma "ligação de descoberta" no onboarding.
+O cerebro e o OpenClaw, com sessao por contato. A Sofia recebe, entende o contexto e traz a especialista certa sem menu frio.
+
+### Ligacao por voz
+
+A IA liga para a pessoa com voz natural via LiveKit + Gemini native-audio. Durante a ligacao, ela pode enviar mensagens, links e carrosseis no WhatsApp do cliente ao vivo.
 
 ### Multimodal
-- **Áudio**: transcrição via Groq Whisper (fallback: Gemini)
-- **Imagem**: descrição via Gemini Vision
-- **Vídeo**: extrai áudio (ffmpeg) + frame (Vision) e entende o que foi mandado
 
-### Integrações (`@conectar`)
-Gmail, Google Agenda, Google Sheets e Drive via Composio/OpenClaw. A Sofia conecta na hora, sem sair do WhatsApp.
+- Audio: transcricao via Groq Whisper, com fallback Gemini.
+- Imagem: descricao via Gemini Vision.
+- Video: extracao de audio com ffmpeg + visao de frames.
+
+### Integracoes
+
+Gmail, Google Agenda, Google Sheets e Drive via Composio/OpenClaw. A Sofia conecta sem tirar o usuario do WhatsApp.
 
 ### Grupos dedicados
-Cria grupo no WhatsApp, adiciona o dono como admin, nomeia, põe ícone e atende direto ali.
+
+Cria grupos no WhatsApp, adiciona o dono como admin, nomeia, coloca icone e atende direto ali.
 
 ### Mini-CRM de leads
-Captura dados de qualificação durante a conversa e salva estruturado. Sofia descobre sem interrogatório — uma coisa por vez, encaixada no papo.
 
-### UX de "pensando"
-Edita uma mensagem ao vivo mostrando o que está fazendo (`"puxando seus leads..."`, `"verificando o caixa..."`). Só ativa em tarefas reais, não em resposta simples.
+Captura dados de qualificacao durante a conversa e salva estruturado. Sofia descobre sem interrogatorio, uma coisa por vez.
 
-### Comandos rápidos
-- `@equipe` — carrossel com as 7 funcionárias + botão "Falar com a X"
-- `@resumo` — relatório diário por setor
-- `@conectar` — abre o fluxo de integrações
+### UX de pensando
+
+Edita uma mensagem ao vivo mostrando o que esta fazendo, como "puxando seus leads..." ou "verificando o caixa...". So ativa em tarefas reais.
+
+---
+
+## Comandos Rapidos
+
+- `@equipe` - carrossel com as funcionarias e botao "Falar com a X".
+- `@resumo` - relatorio diario por setor.
+- `@conectar` - fluxo de integracoes.
+- `@leads` - resumo de leads capturados, quando usado pelo dono.
 
 ---
 
 ## Arquitetura
 
+```text
+WhatsApp
+  |
+  v
+uazapi
+  |
+  v
+bridge.js
+  |-- OpenClaw / Sofia
+  |-- Groq Whisper
+  |-- Gemini Vision / TTS / Live
+  |-- LiveKit / voz-agente.py
+  |-- Composio / integracoes
+  |-- assets publicos
 ```
-                    ┌──────────────────────────────────────────┐
-                    │              WhatsApp (usuário)           │
-                    └──────────────┬───────────────────────────┘
-                                   │ mensagem / áudio / imagem / vídeo
-                    ┌──────────────▼───────────────────────────┐
-                    │          uazapi (gateway WA)              │
-                    │  webhook POST /hook/<secret>              │
-                    │  SSE fallback (deduplicação por msgId)    │
-                    └──────────────┬───────────────────────────┘
-                                   │
-                    ┌──────────────▼───────────────────────────┐
-                    │           bridge.js (Node.js)             │
-                    │  • debounce + deduplicação                │
-                    │  • transcrição (Groq Whisper / Gemini)    │
-                    │  • visão (Gemini Vision)                  │
-                    │  • roteamento para voz / carrossel / CRM  │
-                    │  • health check :8090                     │
-                    └──────────┬────────────┬──────────────────┘
-                               │            │
-              ┌────────────────▼──┐    ┌────▼──────────────────────┐
-              │   OpenClaw (agente)│    │    LiveKit (voz)           │
-              │   cérebro da Sofia │    │  voz-agente.py             │
-              │   sessão/contato   │    │  Gemini native-audio       │
-              │   Claude Sonnet    │    │  SIP trunk (WAVOIP)        │
-              └───────────────────┘    │  pedir_para_empresaia →    │
-                                       │  envia no WA durante call  │
-                                       └────────────────────────────┘
-```
+
+Arquitetura detalhada:
+
+- [FLUXO-EXPERIENCIA.md](FLUXO-EXPERIENCIA.md)
+- [docs/arquitetura.md](docs/arquitetura.md)
+- [docs/tecnico.html](docs/tecnico.html)
 
 ---
 
-## Pré-requisitos
+## Pre-Requisitos
 
-Você vai precisar de contas em:
+Voce vai precisar de contas em:
 
-| Serviço | Uso | Link |
-|---------|-----|------|
-| **uazapi** | Gateway WhatsApp (webhook + SSE) | [uazapi.com](https://uazapi.com) |
-| **OpenClaw** | Agente de IA (cérebro) | instalado no servidor |
-| **Groq** | Transcrição de áudio (Whisper) | [console.groq.com](https://console.groq.com) |
-| **Google / Gemini** | Visão, TTS, áudio live | [aistudio.google.com](https://aistudio.google.com) |
-| **LiveKit** | Infraestrutura de voz WebRTC/SIP | [livekit.io](https://livekit.io) |
-| **Composio** | Integrações Gmail, Agenda, Sheets | [composio.dev](https://composio.dev) |
-| **WAVOIP** *(opcional)* | Ligações pelo número do WhatsApp | [wavoip.com](https://wavoip.com) |
+| Servico | Uso |
+|---------|-----|
+| uazapi | Gateway WhatsApp |
+| OpenClaw | Cerebro/agente da Sofia |
+| Groq | Transcricao de audio |
+| Google/Gemini | Visao, TTS, audio live e embeddings |
+| LiveKit | Infraestrutura de voz |
+| Composio | Gmail, Agenda, Sheets e Drive |
+| WAVOIP | Ligacoes pelo numero do WhatsApp, opcional |
 
 Runtime:
-- **Node.js 18+** e npm
-- **Python 3.11+** e pip
-- **ffmpeg** (transcrição de vídeo/áudio)
-- **PM2** (processo em produção)
-- **Docker + Docker Compose** (infraestrutura LiveKit)
+
+- Node.js 18+
+- Python 3.11+
+- ffmpeg
+- PM2
+- Docker e Docker Compose, para voz/LiveKit
 
 ---
 
-## Instalação rápida
+## Instalacao Rapida
 
 ```bash
-git clone https://github.com/seu-usuario/empresa-ia-oss.git
-cd empresa-ia-oss
+git clone https://github.com/saraivabr/empresa-ia.git
+cd empresa-ia
 ./setup.sh
 ```
 
-O script valida o ambiente, instala dependências e cria o `.env` com instruções.
+O script valida o ambiente, instala dependencias e cria instrucoes para o `.env`.
 
 ---
 
-## Configuração passo a passo
-
-### 1. Variáveis de ambiente
+## Configuracao
 
 ```bash
 cp .env.example .env
 ```
 
-Edite o `.env` com suas chaves. Variáveis essenciais:
+Edite o `.env` com suas chaves:
 
 ```bash
 # Gateway WhatsApp
@@ -165,10 +229,10 @@ UAZ_ADMIN_TOKEN=seu-admin-token
 
 # Agente
 OPENCLAW_BIN=/usr/bin/openclaw
-OWNER_NUMBERS=55119XXXXXXXX   # seu número (dono), só dígitos
-WEBHOOK_SECRET=               # gere com: openssl rand -hex 20
+OWNER_NUMBERS=55119XXXXXXXX
+WEBHOOK_SECRET=
 
-# Transcricao e visao
+# IA
 GROQ_API_KEY=gsk_...
 GOOGLE_API_KEY=...
 GEMINI_API_KEY=...
@@ -179,85 +243,51 @@ LIVEKIT_API_KEY=...
 LIVEKIT_API_SECRET=...
 ```
 
-Veja `.env.example` para a lista completa com comentários.
-
-### 2. Instâncias WhatsApp
+Depois configure as instancias WhatsApp:
 
 ```bash
 cp instances.json.example instances.json
-# Edite instances.json com seu token e número uazapi
 ```
 
-### 3. Assets da equipe
+Edite `instances.json` com o token e numero da sua instancia uazapi.
 
-Gere os áudios de apresentação de cada funcionária:
+---
+
+## Assets Da Equipe
+
+Gerar audios:
 
 ```bash
 export GOOGLE_API_KEY=sua-chave
 python3 gen-audios.py
-# Saída em /opt/empresa-ia/public/
 ```
 
-Gere os cards do carrossel:
+Gerar cards:
 
 ```bash
 node gen-app-cards.js
 ```
 
-### 4. Configurar o uazapi
-
-No painel uazapi, configure o webhook da instância apontando para:
-
-```
-POST https://seu-servidor.com/hook/<WEBHOOK_SECRET>
-```
-
-### 5. Infraestrutura de voz (LiveKit)
-
-```bash
-cd voz-infra
-# Copie e edite os arquivos de configuração
-cp livekit.yaml /opt/livekit/livekit.yaml
-cp sip.yaml /opt/livekit/sip.yaml
-docker compose up -d
-```
-
-### 6. Instalar dependências Python (agente de voz)
-
-```bash
-python3 -m venv /opt/empresa-ia/venv
-/opt/empresa-ia/venv/bin/pip install livekit-agents livekit-plugins-google
-```
-
 ---
 
-## Como rodar
+## Rodando
 
-### Desenvolvimento
+Desenvolvimento:
 
 ```bash
-node bridge.js              # bridge principal
-python3 voz-agente.py start # agente de voz (em outro terminal)
+node bridge.js
+python3 voz-agente.py start
 ```
 
-### Produção com PM2
+Producao com PM2:
 
 ```bash
 cp ecosystem.config.cjs ecosystem.local.config.cjs
-# Edite ecosystem.local.config.cjs com seus caminhos
 pm2 start ecosystem.local.config.cjs
 pm2 save
-pm2 startup
 ```
 
-O agente de voz roda com o script dedicado:
-
-```bash
-/opt/empresa-ia/voz-infra/run.sh
-# Ou via systemd / pm2 — veja a documentação em docs/voz.md
-```
-
-### Verificar saúde
+Health check:
 
 ```bash
 curl http://localhost:8090/health
@@ -271,66 +301,61 @@ curl http://localhost:8090/health
 npm test
 ```
 
-16 testes cobrindo: roteamento de mensagens, carrosséis, usage tracking, health check, comandos `@equipe` e `@resumo`.
-
 ---
 
-## Estrutura do projeto
+## Estrutura
 
-```
-empresa-ia-oss/
-├── bridge.js              # Gateway principal: webhook + SSE + agente + envio rico
-├── voz-agente.py          # Agente de voz LiveKit (Gemini native-audio, 9 personas)
-├── voz-bridge.py          # Bridge de contexto para ElevenLabs (opcional)
-├── gen-audios.py          # Gera áudios PTT de apresentação (Gemini TTS)
-├── gen-app-cards.js       # Gera cards de carrossel da equipe
-├── gen-group-icon.js      # Gera ícone de grupo WhatsApp
-├── autocalls-tool-new.js  # Ferramenta de chamadas automáticas
-├── SOUL-empresaia-full.md # System prompt completo da Sofia (alma do agente)
-├── soul-empresaia.md      # System prompt condensado (comportamento pull)
-├── FLUXO-EXPERIENCIA.md   # Fonte da verdade: fluxo, roteiros, personas
-├── ecosystem.config.cjs   # Config PM2 (copie para .local. e edite)
-├── instances.json.example # Exemplo de config de instâncias uazapi
-├── .env.example           # Todas as variáveis de ambiente comentadas
-├── voz-infra/             # Docker Compose + configs LiveKit + SIP
-├── docs/                  # Documentação HTML (usuário final + técnico)
-└── test/                  # Testes Node.js (node:test)
+```text
+empresa-ia/
+  bridge.js
+  voz-agente.py
+  voz-bridge.py
+  gen-audios.py
+  gen-app-cards.js
+  gen-group-icon.js
+  autocalls-tool-new.js
+  SOUL-empresaia-full.md
+  soul-empresaia.md
+  FLUXO-EXPERIENCIA.md
+  ecosystem.config.cjs
+  instances.json.example
+  .env.example
+  voz-infra/
+  docs/
+  test/
 ```
 
 ---
 
-## Usando com Claude Code
+## Documentacao
 
-Este projeto inclui um `CLAUDE.md` com contexto completo da arquitetura, comandos e convenções.
-
-```bash
-claude    # Inicia o Claude Code — lê CLAUDE.md automaticamente
-```
-
----
-
-## Documentação
-
-- `docs/index.html` — Guia do usuário final (como usar no dia a dia)
-- `docs/tecnico.html` — Referência técnica (endpoints, diretivas, deploy)
-- `docs/arquitetura.md` — Arquitetura detalhada
-- `docs/voz.md` — Infraestrutura de voz e ligações
-- `docs/multimodal.md` — Transcrição de áudio, visão e vídeo
-- `docs/integracoes.md` — Gmail, Agenda, Sheets via Composio
-- `docs/personas.md` — As personas, vozes e roteiros
+- [docs/index.html](docs/index.html) - guia do usuario final.
+- [docs/tecnico.html](docs/tecnico.html) - referencia tecnica.
+- [docs/vendas-empresaia.md](docs/vendas-empresaia.md) - modelo comercial: open-source, Comunidade Saraiva e implementacao.
+- [FLUXO-EXPERIENCIA.md](FLUXO-EXPERIENCIA.md) - fluxo, personas e experiencia.
+- [SOUL-empresaia-full.md](SOUL-empresaia-full.md) - prompt completo da Sofia.
 
 ---
 
 ## Contribuindo
 
-Veja [CONTRIBUTING.md](CONTRIBUTING.md) para como contribuir.
+Veja [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Antes de abrir PR:
+
+- rode `npm test`;
+- nao commite chaves ou dados reais;
+- documente mudancas de comportamento;
+- abra uma issue antes de funcionalidades grandes.
 
 ---
 
-## Licença
+## Licenca
 
-MIT — veja [LICENSE](LICENSE). Gratuito para todos.
+MIT. Veja [LICENSE](LICENSE).
+
+Gratuito para todos.
 
 ---
 
-*Empresa.ia — porque atendimento virou commodity. O jogo agora é a experiência.*
+Empresa.ia - porque atendimento virou commodity. O jogo agora e a experiencia.
