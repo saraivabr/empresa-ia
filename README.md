@@ -6,7 +6,9 @@
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-uazapi-25D366.svg)](https://uazapi.com/)
 [![Open Source](https://img.shields.io/badge/open--source-gratuito-brightgreen.svg)](#)
 
-> O sistema operacional que vive dentro do WhatsApp.
+> O primeiro sistema operacional agentico brasileiro para WhatsApp.
+
+Criado por Fellipe Saraiva, no Brasil, para a realidade de quem vende, atende e opera pelo WhatsApp.
 
 Nao e chatbot. Nao e menu de opcoes. E um time de funcionarias de IA que toca a operacao do seu negocio direto no WhatsApp, com voz, personalidade e contexto real.
 
@@ -14,9 +16,13 @@ Nao e chatbot. Nao e menu de opcoes. E um time de funcionarias de IA que toca a 
 
 Empresa.ia e open-source e gratuito para qualquer pessoa usar, estudar, modificar e adaptar. A Comunidade Saraiva, a implementacao e a operacao assistida existem para quem quer aprender mais rapido, implantar com criterio ou evoluir a operacao sem montar tudo sozinho.
 
+100% brasileiro na concepcao, na linguagem e no jeito de operar: feito para empresario, agencia, consultor, clinica, prestador de servico e criador que vive no WhatsApp todos os dias.
+
 ---
 
 ## O Que E
+
+A Empresa.ia e o primeiro sistema operacional agentico brasileiro para WhatsApp: uma camada de execucao onde humanos decidem, agentes executam e o dono acompanha tudo pela conversa.
 
 Imagine ter uma equipe completa que:
 
@@ -35,7 +41,7 @@ Tudo isso no WhatsApp. Sem app novo. Sem onboarding complicado. Manda um "oi" e 
 
 Publicar a Empresa.ia no GitHub nao enfraquece o negocio. Fortalece.
 
-Codigo aberto cria confianca, reduz dependencia, permite auditoria, atrai operadores e ajuda a criar a categoria de empresas agenticas. Ninguem precisa pagar para acessar o sistema. O valor comercial esta no caminho:
+Codigo aberto cria confianca, reduz dependencia, permite auditoria, atrai operadores e ajuda a criar a categoria de empresas agenticas brasileiras. Ninguem precisa pagar para acessar o sistema. O valor comercial esta no caminho:
 
 - aprender com a Comunidade Saraiva;
 - implementar no negocio real;
@@ -172,7 +178,8 @@ bridge.js
 Arquitetura detalhada:
 
 - [FLUXO-EXPERIENCIA.md](FLUXO-EXPERIENCIA.md)
-- [docs/arquitetura.md](docs/arquitetura.md)
+- [ORGANOGRAMA.md](ORGANOGRAMA.md)
+- [ARQUITETURA.md](ARQUITETURA.md)
 - [docs/tecnico.html](docs/tecnico.html)
 
 ---

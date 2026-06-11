@@ -1,12 +1,12 @@
 # Estrutura de Vendas - Empresa.ia
 
-Documento operacional para vender em volta da Empresa.ia deste repositorio: a equipe agentica gratuita e open-source que vive no WhatsApp, com Sofia, Clara, Bia, Maya, Helena, Lara e Nina.
+Documento operacional para vender em volta da Empresa.ia deste repositorio: o primeiro sistema operacional agentico brasileiro para WhatsApp, criado por Fellipe Saraiva, gratuito e open-source.
 
 ## 1. Posicionamento
 
 ### Frase curta
 
-Empresa.ia e uma equipe de IA open-source dentro do WhatsApp para atender, vender, organizar e reportar a operacao da empresa.
+Empresa.ia e o primeiro sistema operacional agentico brasileiro para WhatsApp: uma equipe de IA open-source para atender, vender, organizar e reportar a operacao da empresa.
 
 ### O que nao vender
 
@@ -22,12 +22,31 @@ Empresa.ia e uma equipe de IA open-source dentro do WhatsApp para atender, vende
 - Implementacao para quem quer a Empresa.ia funcionando no proprio negocio sem montar tudo sozinho.
 - Operacao assistida para quem quer evoluir processos, setores e integracoes continuamente.
 - O sistema completo open-source como prova, distribuicao e criacao de categoria.
+- A autoria brasileira de Fellipe Saraiva como autoridade, identidade e narrativa de origem.
 
 ### Tese
 
 O empresario nao quer aprender IA. Ele quer parar de ser o gargalo da propria empresa.
 
 A Empresa.ia entra como a primeira camada operacional entre o dono e a rotina: conversa, entende, puxa dados reais, sugere proximos passos e executa com aprovacao.
+
+### Copy-mestra
+
+Empresa.ia e o primeiro sistema operacional agentico brasileiro para WhatsApp.
+
+Criado por Fellipe Saraiva, no Brasil, para a realidade de quem vende, atende e opera pelo WhatsApp todos os dias.
+
+100% brasileiro na concepcao, na linguagem e no jeito de operar.
+
+O codigo e aberto. O sistema e gratuito. O atalho e pago: Comunidade Saraiva, implementacao e operacao assistida.
+
+### Versao curta
+
+O primeiro sistema operacional agentico brasileiro para WhatsApp.
+
+### Versao de venda
+
+Voce pode usar a Empresa.ia de graca porque o codigo e aberto. O que a gente vende nao e acesso: e caminho, criterio e velocidade para transformar isso na operacao real da sua empresa.
 
 ### Estrategia open-source
 
@@ -113,7 +132,7 @@ Fluxo:
 
 CTA:
 
-"Pode usar. O sistema e gratuito e open-source. Se quiser acelerar e montar isso direito no seu negocio, eu te mostro os caminhos."
+"Pode usar. A Empresa.ia e o primeiro sistema operacional agentico brasileiro para WhatsApp, gratuito e open-source. Se quiser acelerar e montar isso direito no seu negocio, eu te mostro os caminhos."
 
 ### Produto 1: Comunidade Saraiva
 
@@ -227,7 +246,7 @@ Gancho principal:
 
 Promessa publica:
 
-"A Empresa.ia e gratuita e open-source. Entra, usa e entende na pratica como e ter uma equipe de IA no WhatsApp."
+"A Empresa.ia e o primeiro sistema operacional agentico brasileiro para WhatsApp. E gratuita, open-source e feita para voce entender na pratica como e ter uma equipe de IA operando pelo WhatsApp."
 
 Conteudos que vendem melhor:
 
@@ -303,7 +322,7 @@ Classificacao:
 
 Pitch curto:
 
-"Pode usar a Empresa.ia de graca. O codigo tambem vai estar aberto no GitHub. O que eu venderia para voce nao e acesso ao sistema. E o caminho para usar isso direito: entrar na Comunidade Saraiva para aprender e evoluir, ou fazer uma implementacao comigo para colocar no seu negocio com seus processos, sua equipe e suas prioridades."
+"Pode usar a Empresa.ia de graca. O codigo tambem esta aberto no GitHub. Ela foi criada pelo Fellipe Saraiva como o primeiro sistema operacional agentico brasileiro para WhatsApp. O que eu venderia para voce nao e acesso ao sistema. E o caminho para usar isso direito: entrar na Comunidade Saraiva para aprender e evoluir, ou fazer uma implementacao comigo para colocar no seu negocio com seus processos, sua equipe e suas prioridades."
 
 Pergunta de fechamento:
 
@@ -397,7 +416,7 @@ Funcao:
 
 Fala. Vi que voce se interessou pela Empresa.ia.
 
-Antes de qualquer coisa: o sistema e gratuito e open-source. Pode entrar e usar.
+Antes de qualquer coisa: a Empresa.ia e gratuita e open-source. E o primeiro sistema operacional agentico brasileiro para WhatsApp, criado pelo Fellipe Saraiva. Pode entrar e usar.
 
 Pergunta direta: hoje, qual parte da sua empresa mais depende de voce no manual?
 
@@ -417,7 +436,7 @@ Quer ver uma demo rapida?
 
 Isso que voce viu nao e uma versao capada para vender software.
 
-A Empresa.ia e gratuita e open-source porque a ideia e espalhar esse novo jeito de operar.
+A Empresa.ia e gratuita e open-source porque a ideia e espalhar esse novo jeito brasileiro de operar com agentes no WhatsApp.
 
 O que existe pago sao dois atalhos:
 
